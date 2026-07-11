@@ -345,6 +345,16 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 3rem}
 .reveal{opacity:0;transform:translateY(4px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
+/* legal pages (privacy, terms) */
+.legal{max-width:72ch}
+.legal h3{font-size:1.25rem;margin:2.2rem 0 .5rem}
+.legal h3 .code{display:block;margin-bottom:.25rem}
+.legal p{font-size:.95rem;color:var(--t-body);margin:.6rem 0}
+.legal ul{margin:.6rem 0 .6rem 1.2rem;font-size:.95rem;color:var(--t-body)}
+.legal li{margin:.3rem 0}
+.legal strong{color:var(--t-hi)}
+.legal a{color:var(--t-hi);text-decoration:none;border-bottom:1px solid var(--line-hover)}
+
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
   .reveal{opacity:1;transform:none}

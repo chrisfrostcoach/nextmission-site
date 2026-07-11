@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Next Mission — the field manual for the fight after service</title>
-<meta name="description" content="A 90-day field manual for the fight after service. Built for British veterans. The mission changed. The standard didn't.">
+<title>The Next Mission — the field manual for the life after service</title>
+<meta name="description" content="A 90-day field manual for the life after service. Built for British veterans. The mission changed. The standard didn't.">
 <!-- no-flash day/night init — MUST run in <head> before paint, inlined on every page -->
-<script>(function(){try{var t=localStorage.getItem('tnm-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<meta name="theme-color" content="#1C1613">
+<script>(function(){try{var t=localStorage.getItem('tnm-theme');if(t!=='light'&&t!=='dark'){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="theme-color" content="#EFE9DE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -27,9 +27,9 @@
       <a href="manual.html">Manual</a>
       <a href="brotherhood.html">Brotherhood</a>
       <a href="about.html">About</a>
-      <button class="theme-toggle" id="themetoggle" type="button" aria-pressed="false" aria-label="Switch to day mode" title="Day / Night mode">
+      <button class="theme-toggle" id="themetoggle" type="button" aria-pressed="true" aria-label="Switch to night mode" title="Day / Night mode">
         <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
-        <span class="tt-label">Night</span>
+        <span class="tt-label">Day</span>
       </button>
       <a class="btn" href="join.html#call">Request a Briefing Call</a>
     </div>
@@ -38,12 +38,21 @@
 
 <main>
 
-<!-- 01 · HERO — the 40-second briefing film is the hero object, full-bleed + vignetted;
+<style>
+/* page-scoped — snazzier warmth strips; reuse tokens/classes, no palette changes */
+.hero-sub{color:var(--t-body);font-size:clamp(1.05rem,2.4vw,1.28rem);line-height:1.5;max-width:46ch;margin:.2rem auto 1rem}
+.changes{list-style:none;margin:.4rem 0 0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+.changes li{position:relative;padding-left:1.15em;font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:-.02em;line-height:1.02;font-size:clamp(1.7rem,4.6vw,3rem);color:var(--t-hi)}
+.changes li::before{content:"";position:absolute;left:0;top:.44em;width:.5em;height:.13em;background:var(--bronze)}
+</style>
+
+<!-- 01 · HERO — the 48-second briefing film is the hero object, full-bleed + vignetted;
      the page's one glow (neutral warm-white key light, night only) sits behind it -->
 <section class="hero glow band-air">
   <div class="wrap hero-in">
-    <span class="code" data-scramble>TNM-01 / FIELD MANUAL FOR THE FIGHT AFTER SERVICE</span>
+    <span class="code" data-scramble>LAST DAY IN UNIFORM → FIRST DAY IN CIVVIES</span>
     <h1 class="hero-h1">Nobody chooses the transition. You choose how you meet it.</h1>
+    <p class="hero-sub">Everything the service built into you comes with you. This is where it gets pointed at civilian life — your health, your money, your work, your family.</p>
     <p class="doctrine">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
   </div>
 
@@ -53,9 +62,9 @@
         <source src="assets/films/hero.mp4" type="video/mp4">
         Your browser can't play embedded video. <a href="assets/films/hero.mp4">Open the briefing film</a>.
       </video>
-      <button class="film-play" id="filmplay" aria-label="Play the 40-second briefing film">
+      <button class="film-play" id="filmplay" aria-label="Play the 48-second briefing film">
         <span class="film-mark"><svg viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.92)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.92)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg></span>
-        <span class="film-cue"><svg viewBox="0 0 14 16" fill="currentColor" aria-hidden="true"><path d="M0 0 L14 8 L0 16 Z"/></svg> Play the film · 40 sec</span>
+        <span class="film-cue"><svg viewBox="0 0 14 16" fill="currentColor" aria-hidden="true"><path d="M0 0 L14 8 L0 16 Z"/></svg> Play the film · 48 sec</span>
         <span class="code">WHAT THIS IS · HOW IT WORKS · WHO IT'S FOR</span>
       </button>
     </figure>
@@ -64,6 +73,7 @@
   <div class="wrap hero-cta">
     <a class="btn" href="join.html#call">Request a Briefing Call</a>
     <p class="fine">You're not buying a place. You're asking for one. Class 26-08 · 20 places.</p>
+    <p class="fine">Built for those who served — and open to the people who stand with them.</p>
   </div>
 </section>
 
@@ -75,7 +85,7 @@
       <div class="creed-line"><span class="creed-code">SEC 02.1</span><span class="creed-mask"><span class="creed-txt">The uniform came off. The operator didn't.</span></span></div>
       <div class="creed-line"><span class="creed-code">SEC 02.2</span><span class="creed-mask"><span class="creed-txt">You had the edge in uniform. Nobody took it.</span></span></div>
       <div class="creed-line"><span class="creed-code">SEC 02.3</span><span class="creed-mask"><span class="creed-txt">It just lost its orders.</span></span></div>
-      <div class="creed-line"><span class="creed-code">SEC 02.4</span><span class="creed-mask"><span class="creed-txt">The next mission is yours to take.</span></span></div>
+      <div class="creed-line"><span class="creed-code">SEC 02.4</span><span class="creed-mask"><span class="creed-txt">The next mission is a civilian one — and it's yours to take.</span></span></div>
     </div>
   </div>
 </section>
@@ -96,6 +106,22 @@
       <p>What actually happened when you got out: the mission stopped, the section scattered, and the standard you carried without thinking suddenly had <span class="blk">nowhere to point</span>. Nobody re-issued it. That isn't brokenness — it's <span class="blk">waste</span>. A trained operator, idling.</p>
       <span class="hint">Hover to declassify · tap to reveal all</span>
     </div>
+    <p class="gap-copy reveal" style="margin-top:1.6rem;font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.06;color:var(--t-hi);font-size:clamp(1.3rem,3vw,1.9rem);max-width:24ch">None of that is gone. It just needs new orders — civilian ones.</p>
+  </div>
+</section>
+
+<!-- 03.5 · WHAT CHANGES — warm, benefit-led life-language strip (snazzier move #3) -->
+<section class="band-air">
+  <div class="wrap reveal">
+    <span class="code">WHAT CHANGES</span>
+    <h2 class="big" style="margin:.5rem 0 1.5rem;max-width:20ch">Point it at the things that matter now.</h2>
+    <ul class="changes">
+      <li>Your health.</li>
+      <li>Your money.</li>
+      <li>How you lead.</li>
+      <li>The people around you.</li>
+      <li>What you leave behind.</li>
+    </ul>
   </div>
 </section>
 
@@ -106,15 +132,16 @@
     <span class="code" data-scramble>TNM-04 / THE STANDARD IS A MAN, NOT A CURVE</span>
 
     <div class="provenance">
-      <div class="prov"><b>90</b><span>Days · one operation</span></div>
-      <div class="prov"><b>9</b><span>Fronts · one campaign</span></div>
-      <div class="prov"><b>20+</b><span>Years in business</span></div>
+      <div class="prov"><b>90</b><span>Days · one crossing</span></div>
+      <div class="prov"><b>9</b><span>Areas of life</span></div>
+      <div class="prov"><b>9</b><span>Years out — building & coaching</span></div>
     </div>
 
     <blockquote style="font-size:clamp(1.4rem,3.4vw,2rem);color:var(--t-hi);max-width:30ch;font-family:var(--font-display);text-transform:uppercase;font-weight:700;line-height:1.08;letter-spacing:-.01em;margin:0 0 1rem">
       One name is already on this roll. Mine. I'm not asking you to do anything I didn't do first.
     </blockquote>
-    <p class="lead" style="margin-bottom:1.4rem">British Army veteran. The drift after discharge was real; twenty-odd years in business and £200k+ of my own training later, this is the operation I wish I'd been handed. <a class="textlink" href="about.html">Read the full dossier →</a></p>
+    <p class="lead" style="margin-bottom:.6rem">British Army veteran. The drift after discharge was real; in the nine years since, I've built businesses, trained as a coach, and put £200k+ into my own development. This is the programme I wish I'd been handed. <a class="textlink" href="about.html">Read the full dossier →</a></p>
+    <p style="margin:0 0 1.4rem"><a class="textlink" href="https://chrisfrost.coach">Chris also coaches owners and leaders at chrisfrost.coach →</a></p>
 
     <!-- 0/30/60/90 Trajectory Chart — brass readiness dial (§5 #5), labelled THE MODEL -->
     <figure class="traj" aria-label="The model: 0/30/60/90 readiness trajectory. Not member results.">
@@ -140,12 +167,12 @@
         <text class="daycode" x="420" y="262" text-anchor="middle">DAY 060</text>
         <text class="daycode" x="600" y="262" text-anchor="middle">DAY 090</text>
       </svg>
-      <figcaption class="traj-foot">Provisional. The model is the standard the class is measured against — real deltas replace it once Class 26-08 lands. Where a funnel puts five gold stars, we put the numbers.</figcaption>
+      <figcaption class="traj-foot">Provisional. The model is the standard the class is measured against — the real numbers replace it once Class 26-08 lands. Where a funnel puts five gold stars, we put the numbers.</figcaption>
     </figure>
 
     <div class="advisory brass" style="margin-top:2.2rem">
       <span class="code">STANDARD — EARNED, NEVER GIVEN</span>
-      <p>No stock photos of strangers. No five stars from nobody. The only names on this roll will be men who finished — real name, real service, real delta. Class 26-08 writes the first line.</p>
+      <p>No stock photos of strangers. No five stars from nobody. The only names on this roll will be people who finished — real name, real service, real change. Class 26-08 writes the first line.</p>
     </div>
   </div>
 </section>
@@ -163,18 +190,42 @@
       </a>
       <div class="pipe-arrow" aria-hidden="true">→</div>
       <a class="pipe-node" href="brotherhood.html">
-        <span class="code">NET-39</span><b>Brotherhood</b>
+        <span class="code">NET-20</span><b>Brotherhood</b>
         <small>The net: section channels, two calls a month.</small>
-        <span class="p">£39 · MONTHLY</span>
+        <span class="p">£20 · MONTHLY</span>
       </a>
       <div class="pipe-arrow" aria-hidden="true">→</div>
       <a class="pipe-node" href="programme.html">
         <span class="code">TNM-90</span><b>The Cohort</b>
         <small>90 days, run as a class. Application-gated.</small>
-        <span class="p">£497 · BY BRIEFING CALL</span>
+        <span class="p">£599 · BY BRIEFING CALL</span>
       </a>
     </div>
     <p class="fig-cap">FIG. 1 — SELECTION PIPELINE. EACH ROUTE STANDS ALONE; MOST MEN RUN THEM IN ORDER.</p>
+  </div>
+</section>
+
+<!-- 05.5 · HOW IT WORKS — three warm steps, reusing the pipeline layout (snazzier move #4) -->
+<section class="band-air">
+  <div class="wrap reveal">
+    <span class="code">HOW IT WORKS · THREE STEPS</span>
+    <h2 class="big" style="margin-top:.5rem">Plain steps. No mystery.</h2>
+    <div class="pipeline">
+      <div class="pipe-node">
+        <span class="code">STEP 01</span><b>Book the call</b>
+        <small>A 20-minute briefing call — a proper conversation, not a pitch.</small>
+      </div>
+      <div class="pipe-arrow" aria-hidden="true">→</div>
+      <div class="pipe-node">
+        <span class="code">STEP 02</span><b>Join your class</b>
+        <small>Take one of twenty places in the class of twenty.</small>
+      </div>
+      <div class="pipe-arrow" aria-hidden="true">→</div>
+      <div class="pipe-node">
+        <span class="code">STEP 03</span><b>Walk the 90 days</b>
+        <small>Ninety days beside people who've made the crossing.</small>
+      </div>
+    </div>
   </div>
 </section>
 

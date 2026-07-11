@@ -90,7 +90,7 @@
   /* briefing player (index only) */
   var player = document.getElementById("player");
   if (player) {
-    var DUR = 185;
+    var DUR = 40;
     var scenes = Array.prototype.slice.call(player.querySelectorAll(".scene"));
     var poster = document.getElementById("poster");
     var bar = document.getElementById("bar");

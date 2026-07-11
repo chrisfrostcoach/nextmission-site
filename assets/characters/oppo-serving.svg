@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <path d="M48 224V151Q48 128 69 120L82 115H118L131 120Q152 128 152 151V224Z" fill="#161F42" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M48 159Q36 173 39 212L61 211L65 158" fill="#161F42" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M152 159Q164 173 161 212L139 211L135 158" fill="#161F42" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="50" cy="216" r="11" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <circle cx="150" cy="216" r="11" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <rect x="88" y="105" width="24" height="24" rx="10" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <path d="M61 69Q61 32 100 28Q139 32 139 69V87Q139 115 100 119Q61 115 61 87Z" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <path d="M61 68Q63 35 100 31Q134 34 139 62Q126 54 115 48Q92 62 62 61Z" fill="#090E25" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M57 43Q76 16 121 27Q139 32 143 43Q105 49 66 45Z" fill="#161F42" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M63 44Q88 50 131 43" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round"/>
+  <path d="M76 72Q84 67 91 71" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round"/>
+  <path d="M109 71Q117 67 124 72" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="84" cy="78" r="3" fill="#090E25"/>
+  <circle cx="116" cy="78" r="3" fill="#090E25"/>
+  <path d="M100 78L96 88L102 89" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M91 98Q100 104 109 98" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round"/>
+  <path d="M82 117L100 134L118 117" fill="#F2F3F7" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M100 134V224" fill="none" stroke="#090E25" stroke-width="3"/>
+  <rect x="63" y="150" width="21" height="5" rx="2" fill="#C9A56A" stroke="#090E25" stroke-width="3"/>
+  <rect x="116" y="150" width="21" height="5" rx="2" fill="#C9A56A" stroke="#090E25" stroke-width="3"/>
+</svg>

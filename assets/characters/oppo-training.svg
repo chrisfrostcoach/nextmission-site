@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <path d="M33 158L58 130L83 158L70 158V205H46V158Z" fill="#C9A56A" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M49 224V147Q49 127 70 119L84 114H116L130 119Q151 127 151 147V224Z" fill="#E8373D" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M51 154Q37 170 42 213L65 212L70 158" fill="#E8373D" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="52" cy="218" r="10" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <path d="M149 154Q163 167 157 196L135 190L130 158" fill="#E8373D" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="139" cy="190" r="10" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <circle cx="139" cy="174" r="15" fill="#F2F3F7" stroke="#090E25" stroke-width="3"/>
+  <rect x="135" y="154" width="8" height="6" rx="2" fill="#C9A56A" stroke="#090E25" stroke-width="3"/>
+  <path d="M139 174L146 168M139 174V164" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round"/>
+  <rect x="88" y="103" width="24" height="25" rx="10" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <path d="M61 60Q61 26 100 22Q139 26 139 60V81Q139 109 100 113Q61 109 61 81Z" fill="#D9A47E" stroke="#090E25" stroke-width="3"/>
+  <path d="M62 57Q65 28 100 24Q134 28 139 55Q124 44 115 40Q91 54 62 48Z" fill="#090E25" stroke="#090E25" stroke-width="3"/>
+  <path d="M75 68Q84 74 92 69M108 69Q116 74 125 68" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="84" cy="78" r="3" fill="#090E25"/><circle cx="116" cy="78" r="3" fill="#090E25"/>
+  <path d="M100 78L96 88L102 89" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M93 99Q100 96 107 99" fill="none" stroke="#090E25" stroke-width="3" stroke-linecap="round"/>
+  <path d="M143 65Q151 76 143 84Q135 76 143 65Z" fill="#8E96B3" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M83 116L100 130L117 116" fill="#E8373D" stroke="#090E25" stroke-width="3" stroke-linejoin="round"/>
+</svg>

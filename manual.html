@@ -4,27 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Field Manual — The Next Mission</title>
-<meta name="description" content="FM-01 — The Next Mission field manual. A 90-day field manual for the fight after service: 9 chapters plus appendices, the Battle Rhythm, 35 minutes a day. £47.">
+<meta name="description" content="FM-01 — the field manual for the fight after service. Nine chapters plus appendices, the Battle Rhythm, 35 minutes a day. Built for British veterans. £47.">
+<!-- no-flash day/night init — MUST run in <head> before paint, inlined on every page -->
+<script>(function(){try{var t=localStorage.getItem('tnm-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="theme-color" content="#1C1613">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="assets/site.css">
 <style>
-/* page-scoped: typographic cover mock (no photography exists yet) + hero layout */
-.man-hero{display:grid;gap:2.5rem;grid-template-columns:1fr;align-items:start;margin-top:2rem}
-@media(min-width:820px){.man-hero{grid-template-columns:320px 1fr}}
-.cover{aspect-ratio:5/7;padding:1rem;display:flex;max-width:320px}
-.cover-in{border:1px solid rgba(255,255,255,.08);flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:1.5rem 1.3rem}
-.cover-top .code{display:block}
-.cover-title{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:2.2rem;line-height:.98;color:var(--t-hi);margin-top:.7rem}
-.cover-sub{font-size:.82rem;color:var(--t-body);margin-top:.7rem;max-width:24ch}
-.cover-serial{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);border-top:1px solid rgba(255,255,255,.08);padding-top:.8rem}
-.excerpt-head{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t-meta);border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:.8rem;margin-bottom:1.1rem}
-.excerpt dl{margin:1rem 0}
-.excerpt dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);margin-top:.8rem}
+/* page-scoped: hard-lit artefact hero over the manual scene + catalogue/specimen styling */
+.man-hero{min-height:clamp(560px,86vh,820px);display:flex;align-items:center}
+.man-hero .wrap{width:100%}
+.man-hero-in{max-width:580px}
+.man-hero h1{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.7rem,6.4vw,4.8rem);line-height:.94;letter-spacing:-.02em;color:var(--t-hi);margin:.4rem 0 .1rem}
+.man-serial{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.75rem 0;margin:1.5rem 0 .2rem}
+.man-hero .spec{background:color-mix(in srgb,var(--ground) 34%,transparent)}
+/* specimen card */
+.excerpt{padding:1.7rem 1.6rem;max-width:680px}
+.excerpt-head{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t-meta);border-bottom:1px solid var(--line);padding-bottom:.8rem;margin-bottom:1.1rem}
+.excerpt p{color:var(--t-body)}
+.excerpt dl{margin:1.1rem 0}
+.excerpt dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);margin-top:.85rem}
 .excerpt dd{margin:.2rem 0 0;font-size:.95rem;color:var(--t-body)}
-.excerpt .continues{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t-meta);margin-top:1.4rem}
+.excerpt .continues{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t-meta);margin-top:1.5rem}
 </style>
 </head>
 <body>
@@ -32,7 +36,7 @@
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
     <a class="brand" href="index.html" aria-label="The Next Mission home">
-      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.92)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.92)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
       <b>THE NEXT MISSION</b>
     </a>
     <div class="nav-links">
@@ -40,6 +44,10 @@
       <a href="manual.html" aria-current="page">Manual</a>
       <a href="brotherhood.html">Brotherhood</a>
       <a href="about.html">About</a>
+      <button class="theme-toggle" id="themetoggle" type="button" aria-pressed="false" aria-label="Switch to day mode" title="Day / Night mode">
+        <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+        <span class="tt-label">Night</span>
+      </button>
       <a class="btn" href="join.html#call">Request a Briefing Call</a>
     </div>
   </div>
@@ -47,42 +55,37 @@
 
 <main>
 
-<section class="glow brass" style="border-top:0">
+<!-- 01 · HERO — the manual as issued kit, hard-lit over the artefact scene; edition serial,
+     spec block + the one direct-buy button "Get the Manual" (§6/manual) -->
+<section class="band-scene man-hero" aria-labelledby="man-h">
+  <div class="scene-media" aria-hidden="true">
+    <picture>
+      <img src="assets/scenes/hero-03-manual.jpg" alt="" width="1712" height="960" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <span class="scene-scrim left" aria-hidden="true"></span>
   <div class="wrap">
-    <span class="code" data-scramble>FM-01 / THE ARTEFACT</span>
-    <h1 style="font-size:clamp(3rem,7vw,6rem);line-height:.95;margin-top:.6rem">The Field Manual</h1>
-    <div class="man-hero">
-      <div class="hair cover" aria-label="The Next Mission field manual — cover">
-        <div class="cover-in">
-          <div class="cover-top">
-            <span class="code">CIVILIAN WARRIOR FIELD MANUAL</span>
-            <div class="cover-title">The Next Mission</div>
-            <p class="cover-sub">A 90-Day Field Manual for the Fight After Service</p>
-          </div>
-          <div>
-            <svg width="34" height="34" viewBox="0 0 96 96" aria-hidden="true" style="margin-bottom:.9rem"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.4)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.4)"/><path d="M20 34 L48 18 L76 34" stroke="rgba(255,255,255,.4)"/></g></svg>
-            <p class="cover-serial">TNM-FM-01 · FIRST EDITION · CLASS 26-08 PRINTING</p>
-          </div>
-        </div>
+    <div class="man-hero-in">
+      <span class="code" data-scramble>FM-01 / THE ARTEFACT</span>
+      <h1 id="man-h">The Field Manual</h1>
+      <p class="lead" style="margin-top:1rem">Ninety days, twelve weekly missions, nine domains: health, mission, potential, wealth, leadership, relationships, happiness, chaos, legacy. Every chapter runs the same ten-section structure; every drill is written as <strong>Task, Condition, Standard</strong>. This is the document the whole operation runs on.</p>
+      <p class="man-serial">TNM-FM-01 · FIRST EDITION · CLASS 26-08 PRINTING</p>
+      <div class="spec">
+        <div class="spec-row"><span class="k">Format</span><span class="v">PDF + Print-Ready</span></div>
+        <div class="spec-row"><span class="k">Length</span><span class="v brass">9 Chapters + Appendices</span></div>
+        <div class="spec-row"><span class="k">Daily Load</span><span class="v">35 Min</span></div>
+        <div class="spec-row"><span class="k">Price</span><span class="v">£47</span></div>
       </div>
-      <div>
-        <p class="lead">Ninety days, twelve weekly missions, nine domains: health, mission, potential, wealth, leadership, relationships, happiness, chaos, legacy. Every chapter runs the same 10-section structure; every drill is written as <strong>Task, Condition, Standard</strong>. This is the document the whole operation runs on.</p>
-        <div class="spec">
-          <div class="spec-row"><span class="k">Format</span><span class="v">PDF + Print-Ready</span></div>
-          <div class="spec-row"><span class="k">Length</span><span class="v brass">9 Chapters + Appendices</span></div>
-          <div class="spec-row"><span class="k">Daily Load</span><span class="v">35 Min</span></div>
-          <div class="spec-row"><span class="k">Price</span><span class="v">£47</span></div>
-        </div>
-        <a class="btn" data-pay="manual" data-join-path="join.html" href="join.html?interest=manual#call">Get the Manual</a>
-      </div>
+      <a class="btn" data-pay="manual" data-join-path="join.html" href="join.html?interest=manual#call">Get the Manual</a>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 02 · CONTENTS OF RECORD — the nine domains as catalogue entries -->
+<section class="band-doc">
   <div class="wrap reveal">
-    <span class="code" data-scramble>FM-02 / CONTENTS</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Contents of record</h2>
+    <span class="code" data-scramble>FM-02 / CONTENTS OF RECORD</span>
+    <h2 class="big" style="margin-top:.5rem">Contents of record</h2>
     <div class="record" style="margin-top:1.8rem;max-width:820px">
       <div class="record-row"><span class="k">FRONT</span><span class="v">Welcome &amp; Operating Instructions — the decision, the oppo, the Day-0 Readiness Assessment, and the Battle Rhythm (BR.1–BR.5), defined once.</span></div>
       <div class="record-row"><span class="k">CH01</span><span class="v">Health — energy is the budget every other domain spends from. The 10-Day Fuel Reset, the Cold Finish, sleep to standard.</span></div>
@@ -100,11 +103,12 @@
   </div>
 </section>
 
-<section>
+<!-- 03 · SPECIMEN PAGE — CH01 Cold Finish, Task/Condition/Standard (kept — read before you buy) -->
+<section class="band-air">
   <div class="wrap reveal">
     <span class="code" data-scramble>FM-03 / SPECIMEN PAGE</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Read a page before you buy it</h2>
-    <div class="hair excerpt" style="margin-top:1.8rem;max-width:680px;padding:1.6rem 1.5rem">
+    <h2 class="big" style="margin-top:.5rem">Read a page before you buy it</h2>
+    <div class="hair excerpt" style="margin-top:1.8rem">
       <p class="excerpt-head">EXCERPT — CH01 / HEALTH</p>
       <p style="font-size:.98rem">The aim here is not the beach. It is operational readiness: steady energy through the day, a body that does what you tell it, sleep that actually repairs, and the ability to change your own state on demand instead of being run by it.</p>
       <dl>
@@ -121,21 +125,57 @@
   </div>
 </section>
 
-<section>
+<!-- 04 · THE STANDARD — the 0/30/60/90 trajectory, labelled THE MODEL (§5 #5); the page's one glow (neutral, night only) -->
+<section class="band-doc glow">
   <div class="wrap reveal">
-    <span class="code" data-scramble>FM-04 / ISSUE NOTE</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">One document, two ways to run it</h2>
+    <span class="code" data-scramble>FM-04 / THE STANDARD</span>
+    <h2 class="big" style="margin-top:.5rem">The standard, drawn</h2>
+    <p class="lead" style="margin-top:1rem">The manual doesn't grade on feeling. It grades on days logged. This is the readiness arc the work is measured against — the shape of ninety days done to standard.</p>
+    <figure class="traj" aria-label="The model: 0/30/60/90 readiness trajectory. Not member results.">
+      <div class="traj-head">
+        <span class="label">The Model — Not Member Results</span>
+        <span class="sub">Readiness index · Day 0 / 30 / 60 / 90</span>
+      </div>
+      <svg viewBox="0 0 640 300" aria-hidden="true">
+        <line class="grid" x1="60" y1="60" x2="610" y2="60"/>
+        <line class="grid" x1="60" y1="150" x2="610" y2="150"/>
+        <line class="axis" x1="60" y1="240" x2="610" y2="240"/>
+        <path class="plot" d="M60 192 L240 146 L420 96 L600 60"/>
+        <circle class="node" cx="60" cy="192" r="5"/>
+        <circle class="node" cx="240" cy="146" r="5"/>
+        <circle class="node" cx="420" cy="96" r="5"/>
+        <circle class="node" cx="600" cy="60" r="5"/>
+        <text class="val" data-count="24" x="60" y="176" text-anchor="middle">24</text>
+        <text class="val" data-count="47" x="240" y="130" text-anchor="middle">47</text>
+        <text class="val" data-count="72" x="420" y="80" text-anchor="middle">72</text>
+        <text class="val" data-count="90" x="600" y="44" text-anchor="middle">90</text>
+        <text class="daycode" x="60" y="262" text-anchor="middle">DAY 000</text>
+        <text class="daycode" x="240" y="262" text-anchor="middle">DAY 030</text>
+        <text class="daycode" x="420" y="262" text-anchor="middle">DAY 060</text>
+        <text class="daycode" x="600" y="262" text-anchor="middle">DAY 090</text>
+      </svg>
+      <figcaption class="traj-foot">Provisional. The model is the standard the class is measured against — real deltas replace it once Class 26-08 lands. Where a funnel puts five gold stars, we put the numbers.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 05 · ISSUE NOTE — one document, two ways to run it (the £47 ↔ £497 logic) -->
+<section class="band-air">
+  <div class="wrap reveal">
+    <span class="code" data-scramble>FM-05 / ISSUE NOTE</span>
+    <h2 class="big" style="margin-top:.5rem">One document, two ways to run it</h2>
     <div class="advisory brass" style="margin-top:1.6rem">
       <span class="code">NOTE — THE COHORT CURRICULUM</span>
-      <p>This manual is the curriculum of the 90-day cohort — the class runs it week for week, gate for gate. Men joining <a class="textlink" href="programme.html">TNM-90</a> get the manual included; buy it here only if you're running the 90 on your own recognisance.</p>
+      <p>This manual is the curriculum of the 90-day cohort — the class runs it week for week, gate for gate. Men joining <a class="textlink" href="programme.html">TNM-90</a> (£497) get the manual included; buy it here at <strong>£47</strong> only if you're running the ninety on your own recognisance.</p>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 06 · THE DECISION — spec repeat + the one buy CTA + secondary briefing-call text-link -->
+<section class="band-doc">
   <div class="wrap reveal">
-    <span class="code" data-scramble>FM-05 / THE DECISION</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Do it all, or don't start</h2>
+    <span class="code" data-scramble>FM-06 / THE DECISION</span>
+    <h2 class="big" style="margin-top:.5rem">Do it all, or don't start</h2>
     <p class="lead" style="margin-top:1rem">The manual's own instruction, page one: skimming it will do nothing for you. Thirty-five minutes a day, ninety days, one oppo who sees your log. If you're in, it's £47.</p>
     <div class="spec">
       <div class="spec-row"><span class="k">Format</span><span class="v">PDF + Print-Ready</span></div>
@@ -150,6 +190,7 @@
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="advisory signal" style="margin-bottom:2rem;max-width:none">
@@ -158,16 +199,16 @@
     </div>
     <div class="foot">
       <div>
-        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.4)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.4)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
         <p class="doctrine" style="margin-top:.8rem">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
-        <p class="fine">TNM-FM-01 · Civilian Warrior Brotherhood · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
+        <p class="fine">TNM-FM-01 · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
       </div>
       <nav aria-label="Footer">
         <a href="programme.html">PROGRAMME</a>
         <a href="manual.html">MANUAL</a>
         <a href="brotherhood.html">BROTHERHOOD</a>
         <a href="about.html">ABOUT</a>
-        <a href="index.html">HOME</a>
+        <a href="join.html">JOIN</a>
         <a href="privacy.html">PRIVACY</a>
         <a href="terms.html">TERMS</a>
         <a href="https://chrisfrost.coach">CHRISFROST.COACH</a>

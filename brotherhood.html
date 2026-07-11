@@ -3,19 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Brotherhood — The Next Mission</title>
-<meta name="description" content="The Brotherhood (NET-39): the standing net for British veterans — section channels, an oppo, two live calls a month. £39 per month.">
+<title>The Brotherhood — the standing net for the fight after service</title>
+<meta name="description" content="The Brotherhood (NET-39): the net civvy street never issued you — section channels, an oppo, two live calls a month. Built for British veterans. £39 a month.">
+<!-- no-flash day/night init — MUST run in <head> before paint, inlined on every page -->
+<script>(function(){try{var t=localStorage.getItem('tnm-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="theme-color" content="#1C1613">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="assets/site.css">
 <style>
-  /* page-scoped, per craft standards: hairlines .08, opacity tiers, no new colour */
-  .radar-wrap .wrap{position:relative}
-  .plate{aspect-ratio:1/1;max-width:260px;width:100%}
-  .netgrid{display:grid;gap:1.6rem;grid-template-columns:1fr;align-items:start;margin-top:1.8rem}
-  @media(min-width:760px){.netgrid{grid-template-columns:260px 1fr}}
+  /* page-scoped (per §8 — inline where one page needs it). Warm tokens only, no new colour;
+     hairlines via --line, bronze kept quiet, one red spent on the CTA. */
+
+  /* HERO — the radar/net nested for depth; content sits above the sweep + the one glow */
+  .radar-wrap .wrap{position:relative;z-index:2}
+  .hero-net{max-width:760px}
+  .hero-net h1{font-size:clamp(3rem,8vw,6rem);letter-spacing:-.02em;line-height:.96;margin-top:.5rem}
+  .radar-wrap .spec{margin-top:2.2rem}
+
+  /* two-column insignia + roll */
+  .netgrid{display:grid;gap:1.8rem;grid-template-columns:1fr;align-items:start;margin-top:1.8rem}
+  @media(min-width:760px){.netgrid{grid-template-columns:280px 1fr}}
+
+  /* INSIGNIA holding frame — brass-ruled, corner registration marks, "IN PREPARATION".
+     A real patch (like Chris's face) is never AI-faked (§7/§9.3): this holds the slot honestly. */
+  .plate{position:relative;aspect-ratio:1/1;max-width:280px;width:100%;background:var(--raised);border:1px solid var(--line);border-radius:6px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:1.5rem;overflow:hidden;box-shadow:var(--lift);color:var(--t-meta)}
+  .plate::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--edge);pointer-events:none}
+  .plate-rule{position:absolute;inset:13px;border:1px solid color-mix(in srgb,var(--bronze) 32%,transparent);border-radius:3px;pointer-events:none}
+  .reg{position:absolute;width:9px;height:9px;border:1.5px solid var(--bronze);opacity:.6;pointer-events:none}
+  .reg.tl{top:7px;left:7px;border-right:0;border-bottom:0}
+  .reg.tr{top:7px;right:7px;border-left:0;border-bottom:0}
+  .reg.bl{bottom:7px;left:7px;border-right:0;border-top:0}
+  .reg.br{bottom:7px;right:7px;border-left:0;border-top:0}
+  .plate .ins-mark{width:44px;opacity:.55;position:relative;z-index:1}
+  .plate .code{position:relative;z-index:1;padding:0 .4rem}
+
+  /* FALL IN — muster panel held on --raised so the spec stays fully legible over the scene */
+  .fallin-panel{position:relative;background:var(--raised);border:1px solid var(--line);border-radius:6px;padding:clamp(1.4rem,4vw,2.2rem);max-width:520px;box-shadow:var(--lift)}
+  .fallin-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--edge);pointer-events:none;border-radius:inherit}
+  .fallin-panel .spec{margin:1.2rem 0 1.4rem}
+  .fallin-cta{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
+  .net-copy{max-width:46ch}
 </style>
 </head>
 <body>
@@ -23,7 +54,7 @@
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
     <a class="brand" href="index.html" aria-label="The Next Mission home">
-      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.92)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.92)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
       <b>THE NEXT MISSION</b>
     </a>
     <div class="nav-links">
@@ -31,6 +62,10 @@
       <a href="manual.html">Manual</a>
       <a href="brotherhood.html" aria-current="page">Brotherhood</a>
       <a href="about.html">About</a>
+      <button class="theme-toggle" id="themetoggle" type="button" aria-pressed="false" aria-label="Switch to day mode" title="Day / Night mode">
+        <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+        <span class="tt-label">Night</span>
+      </button>
       <a class="btn" href="join.html#call">Request a Briefing Call</a>
     </div>
   </div>
@@ -38,106 +73,148 @@
 
 <main>
 
-<section class="radar-wrap" style="border-top:0">
+<!-- 01 · HERO — over the radar sweep (the net, alive), nested on the ladder; the page's one
+     glow is a neutral warm-white key light (the Join CTA shares this viewport, §4c) -->
+<section class="radar-wrap glow band-air" aria-labelledby="net-h1">
   <div class="radar" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="code" data-scramble>NET-01 / THE STANDING NET</span>
-    <h1 style="font-size:clamp(3rem,7vw,6rem);margin-top:.5rem">Join the net.</h1>
-    <p class="lead" style="margin-top:1.2rem">The unit gave you a net without asking — an oppo by default, a corridor of men who knew when something was off. <strong>Civvy street doesn't issue one.</strong> The Brotherhood is the standing net: section channels, an oppo, two live calls a month. £39 a month, for as long as it's useful.</p>
-    <div class="spec">
-      <div class="spec-row"><span class="k">Format</span><span class="v">Standing community</span></div>
-      <div class="spec-row"><span class="k">Calls</span><span class="v">2 live per month</span></div>
-      <div class="spec-row"><span class="k">Channels</span><span class="v">Section + all-call</span></div>
-      <div class="spec-row"><span class="k">Price</span><span class="v brass">£39 per month</span></div>
+    <div class="hero-net">
+      <span class="code" data-scramble>NET-01 / THE STANDING NET · £39/MO</span>
+      <h1 id="net-h1">Join the net.</h1>
+      <p class="lead" style="margin-top:1.2rem">In uniform you were issued a net without asking: an oppo by default, a section who clocked when something was off, a corridor of men who'd already stood where you were standing. <strong>Civvy street doesn't issue one</strong> — and the gap where it used to be is a tax you pay quietly, in months. The Brotherhood is that net, rebuilt on purpose: section channels, an oppo, two live calls a month. £39 a month, for as long as it earns its place.</p>
+      <div class="spec">
+        <div class="spec-row"><span class="k">Format</span><span class="v">Standing net</span></div>
+        <div class="spec-row"><span class="k">Calls</span><span class="v">2 live per month</span></div>
+        <div class="spec-row"><span class="k">Channels</span><span class="v">Section + all-call</span></div>
+        <div class="spec-row"><span class="k">Joining</span><span class="v">You take a number</span></div>
+        <div class="spec-row"><span class="k">Price</span><span class="v brass">£39 per month</span></div>
+      </div>
+      <a class="btn" data-pay="brotherhood" data-join-path="join.html" href="join.html?interest=brotherhood#call">Join the Brotherhood</a>
     </div>
-    <a class="btn" data-pay="brotherhood" data-join-path="join.html" href="join.html?interest=brotherhood#call">Join the Brotherhood</a>
   </div>
 </section>
 
-<section>
+<!-- 02 · BELONGING — the net catches (atmospheric scene, hero-06-reachback; mood only) -->
+<section class="band-scene" aria-labelledby="net-h2">
+  <div class="scene-media" aria-hidden="true">
+    <img src="assets/scenes/hero-06-reachback.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+  </div>
+  <span class="scene-scrim left" aria-hidden="true"></span>
+  <div class="wrap reveal">
+    <span class="code" data-scramble>NET-02 / WHEN IT GOES WRONG</span>
+    <h2 id="net-h2" class="big net-copy" style="margin:.7rem 0 1.4rem">A net doesn't ask what happened. It catches.</h2>
+    <p class="lead net-copy">The bad weeks never announce themselves. On a real net you don't have to raise your hand — someone clocks the silence and reaches in. That reach was free in uniform. Here it is rebuilt deliberately, held by men who know the difference between a quiet day and a man going under.</p>
+  </div>
+</section>
+
+<!-- 03 · THE RITUALS — mono timetable, fixed cadence (kept) -->
+<section class="band-doc">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="code" data-scramble>NET-02 / THE RITUALS</span>
+      <span class="code" data-scramble>NET-03 / THE RITUALS</span>
       <h2>The battle rhythm of the net</h2>
-      <p class="lead">Named rituals on a fixed cadence. You always know what's next and what's expected.</p>
+      <p class="lead">Named rituals on a fixed cadence. You always know what's next and what's expected — no motivational noise, just a rhythm you can set your week by.</p>
     </div>
     <div class="sched">
-      <div class="sched-row"><span class="t">Daily</span><div class="d"><b>The net is open.</b> Post the win or the wobble. Either gets answered — that's the point of a net.</div></div>
-      <div class="sched-row"><span class="t">Weekly</span><div class="d"><b>Orders Group posting.</b> SITREPs land in the section channels; the week's brief goes up for all-call.</div></div>
+      <div class="sched-row"><span class="t">Daily</span><div class="d"><b>The net is open.</b> Post the win or the wobble. Either one gets answered — that's the whole point of a net.</div></div>
+      <div class="sched-row"><span class="t">Weekly</span><div class="d"><b>Orders group.</b> SITREPs land in the section channels; the week's brief goes up for all-call.</div></div>
       <div class="sched-row"><span class="t">Fortnightly</span><div class="d"><b>Live call over Zoom — two a month.</b> AARs and obstacles worked in the open. Led, not lectured.</div></div>
       <div class="sched-row"><span class="t">Quarterly</span><div class="d"><b>Intake.</b> A new class falls in and takes its numbers on the roll.</div></div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 04 · MEMBER NUMBER & INSIGNIA — "You take a number"; insignia = honest holding frame -->
+<section class="band-air">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="code" data-scramble>NET-03 / MEMBER NUMBER &amp; INSIGNIA</span>
+      <span class="code" data-scramble>NET-04 / MEMBER NUMBER &amp; INSIGNIA</span>
       <h2>You take a number</h2>
+      <p class="lead">Not a username. A number on the roll, issued in order of joining and held for as long as you're on the net.</p>
     </div>
     <div class="netgrid">
-      <div class="id-photo plate">
-        <svg width="34" height="34" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9" stroke="rgba(255,255,255,.25)"><path d="M20 78 L48 62 L76 78"/><path d="M20 56 L48 40 L76 56"/><path d="M20 34 L48 18 L76 34"/></g></svg>
-        <span class="code" style="text-align:center;padding:0 1rem">PLATE 01 — MEMBER PATCH · TO BE SHOT</span>
-      </div>
+      <figure class="plate">
+        <span class="plate-rule" aria-hidden="true"></span>
+        <i class="reg tl" aria-hidden="true"></i><i class="reg tr" aria-hidden="true"></i>
+        <i class="reg bl" aria-hidden="true"></i><i class="reg br" aria-hidden="true"></i>
+        <svg class="ins-mark" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9" stroke="currentColor"><path d="M20 78 L48 62 L76 78"/><path d="M20 56 L48 40 L76 56"/><path d="M20 34 L48 18 L76 34"/></g></svg>
+        <figcaption class="code">PLATE 01 · MEMBER INSIGNIA · IN PREPARATION</figcaption>
+      </figure>
       <div class="advisory brass">
         <span class="code">STANDARD — THE ROLL</span>
-        <p>Every member takes a number, issued in order of joining and held for as long as you're on the net. Founding members — the first intake, Class 26-08 — are marked as founding on the roll, permanently. The member patch is issued with your number; photography of the insignia goes up when the first patches are in hand.</p>
+        <p>Every member takes a number, issued in order of joining. The first intake — Class 26-08 — is marked as founding on the roll, permanently; that mark is never re-issued. The insignia is a real patch, drawn and pressed for members, not a stock graphic — so its plate stays a ruled holding frame until the first patches are in hand and photographed. We don't fake it, and we don't fake you a face to sit next to.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 05 · MEMBER LOGS — nominal-roll doctrine; the terminal is reserved for REAL records only -->
+<section class="band-doc">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="code" data-scramble>NET-04 / MEMBER LOGS</span>
+      <span class="code" data-scramble>NET-05 / MEMBER LOGS</span>
       <h2>The log, when it's earned</h2>
-      <p class="lead">Member records go up in one format, and one format only. Nothing on this page will ever be invented.</p>
+      <p class="lead">Member records go up in one format, and one format only. Nothing on this page will ever be invented — no anonymous quotes, no borrowed stars, no strangers' faces.</p>
     </div>
-    <div class="record" style="max-width:640px">
-      <div class="record-row"><span class="k">Name</span><span class="v">In full. Anonymous quotes are banned.</span></div>
-      <div class="record-row"><span class="k">Service</span><span class="v">Service and trade, as it was.</span></div>
-      <div class="record-row"><span class="k">Intake</span><span class="v">Class number and position on the roll.</span></div>
-      <div class="record-row"><span class="k">Entry</span><span class="v">One measured line — what changed, by how much.</span></div>
+    <div class="terminal">
+      <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="terminal-body">
+        <div class="ln">// MEMBER LOG · FORMAT RESERVED FOR REAL RECORDS</div>
+        <div><span class="ln">name&gt;</span> in full — anonymous quotes are banned</div>
+        <div><span class="ln">service&gt;</span> service and trade, as it was</div>
+        <div><span class="ln">intake&gt;</span> class number and position on the roll</div>
+        <div><span class="ln">entry&gt;</span> one measured line — what changed, by how much</div>
+        <div class="ln">&nbsp;</div>
+        <div><span class="ln">roll&gt;</span> awaiting first entry</div>
+        <div class="ok">// nothing is written here until it happens.</div>
+      </div>
     </div>
-    <div class="advisory brass" style="margin-top:1.4rem">
-      <span class="code">NOTE — NO RECORDS YET, BY DESIGN</span>
-      <p>Member records are published as the net grows; Class 26-08 is the founding intake. If you read a log here, it happened.</p>
+    <div class="advisory brass" style="margin-top:1.6rem">
+      <span class="code">NOTE — NOTHING INVENTED, BY DESIGN</span>
+      <p>Records are published as the net grows; Class 26-08 is the founding intake. If you ever read a log on this page, it happened — real name, real service, real delta.</p>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 06 · WHAT £39 BUYS — the "one decent night at the pub" frame (kept); one crosshair per page -->
+<section class="band-air">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="code" data-scramble>NET-05 / THE PRICE OF ONE ROUND</span>
+      <span class="code" data-scramble>NET-06 / THE PRICE OF ONE ROUND</span>
       <h2>What £39 actually buys</h2>
     </div>
-    <p class="lead">£39 is one decent night at the pub, gone by morning. The same money runs a month on a standing net of <span class="crosshair">men who notice when you go quiet</span> — and say so. That is the entire pitch. No bonuses, no timers, no theatre.</p>
+    <p class="lead" style="font-size:1.12rem">£39 is one decent night at the pub — gone by the morning, with nothing to show for it. The same money runs a whole month on a standing net of <span class="crosshair">men who notice when you go quiet</span> and say so. That is the entire pitch. No bonuses, no timers, no theatre — a fair price for a net, paid monthly, cancelled the day it stops earning its place.</p>
   </div>
 </section>
 
-<section>
+<!-- 07 · FALL IN — the threshold (scene, hero-07-cta) + spec + join CTA + secondary briefing link -->
+<section class="band-scene" aria-labelledby="net-h7">
+  <div class="scene-media" aria-hidden="true">
+    <img src="assets/scenes/hero-07-cta.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+  </div>
+  <span class="scene-scrim left" aria-hidden="true"></span>
   <div class="wrap reveal">
-    <span class="code" data-scramble>NET-06 / FALL IN</span>
-    <h2 style="font-size:clamp(2.2rem,5vw,3.4rem);margin-top:.5rem">Take a number</h2>
-    <div class="spec">
-      <div class="spec-row"><span class="k">Format</span><span class="v">Standing community</span></div>
-      <div class="spec-row"><span class="k">Calls</span><span class="v">2 live per month</span></div>
-      <div class="spec-row"><span class="k">Channels</span><span class="v">Section + all-call</span></div>
-      <div class="spec-row"><span class="k">Price</span><span class="v brass">£39 per month</span></div>
+    <span class="code" data-scramble>NET-07 / FALL IN</span>
+    <h2 id="net-h7" class="big net-copy" style="margin:.7rem 0 1.6rem">Take a number.</h2>
+    <div class="fallin-panel">
+      <p style="color:var(--t-body);max-width:42ch">The door's open and it stays open — join when it's useful, stand down when it isn't. No lock-in, no ceremony beyond taking your number.</p>
+      <div class="spec">
+        <div class="spec-row"><span class="k">Format</span><span class="v">Standing net</span></div>
+        <div class="spec-row"><span class="k">Calls</span><span class="v">2 live per month</span></div>
+        <div class="spec-row"><span class="k">Channels</span><span class="v">Section + all-call</span></div>
+        <div class="spec-row"><span class="k">Price</span><span class="v brass">£39 per month</span></div>
+      </div>
+      <div class="fallin-cta">
+        <a class="btn" data-pay="brotherhood" data-join-path="join.html" href="join.html?interest=brotherhood#call">Join the Brotherhood</a>
+        <a class="textlink" href="join.html#call">Not sure yet? Request a briefing call</a>
+      </div>
     </div>
-    <p style="display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap">
-      <a class="btn" data-pay="brotherhood" data-join-path="join.html" href="join.html?interest=brotherhood#call">Join the Brotherhood</a>
-      <a class="textlink" href="join.html#call">Not sure? Request a briefing call</a>
-    </p>
   </div>
 </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="advisory signal" style="margin-bottom:2rem;max-width:none">
@@ -146,16 +223,16 @@
     </div>
     <div class="foot">
       <div>
-        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.4)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.4)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
         <p class="doctrine" style="margin-top:.8rem">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
-        <p class="fine">TNM-FM-01 · Civilian Warrior Brotherhood · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
+        <p class="fine">TNM-FM-01 · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
       </div>
       <nav aria-label="Footer">
         <a href="programme.html">PROGRAMME</a>
         <a href="manual.html">MANUAL</a>
         <a href="brotherhood.html">BROTHERHOOD</a>
         <a href="about.html">ABOUT</a>
-        <a href="index.html">HOME</a>
+        <a href="join.html">JOIN</a>
         <a href="privacy.html">PRIVACY</a>
         <a href="terms.html">TERMS</a>
         <a href="https://chrisfrost.coach">CHRISFROST.COACH</a>

@@ -4,15 +4,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Programme — The Next Mission</title>
-<meta name="description" content="TNM-90 — the 90-day cohort. Twelve weekly missions, weekly live calls, a fixed daily load of 35 minutes, £497. Founding intake Class 26-08, 20 places.">
+<meta name="description" content="TNM-90 — the 90-day cohort. Three weeks live training (six 2-hour calls), then ten weeks on operations. A fixed 35 minutes a day. £497. Founding intake Class 26-08, 20 places.">
+<!-- no-flash day/night init — MUST run in <head> before paint, inlined on every page -->
+<script>(function(){try{var t=localStorage.getItem('tnm-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="theme-color" content="#1C1613">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="assets/site.css">
 <style>
-/* page-scoped: hero display size per brief §6 type scale */
-.hero-h1{font-size:clamp(3rem,7vw,6rem);line-height:.95;margin-top:.6rem}
+/* page-scoped — /programme, the long graded sales document (§6, §9.4) */
+.hero-h1{font-size:clamp(2.6rem,6.4vw,5.4rem);line-height:.95;letter-spacing:-.02em;max-width:16ch;margin:.5rem 0 0}
+.sec-h{font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem}
+
+/* the nine fronts — static schematic grid (honest static craft) */
+.fronts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:1.6rem}
+.front{background:var(--raised);padding:1rem 1.1rem}
+.front .code{color:var(--bronze);display:block}
+.front b{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.02rem;color:var(--t-hi);display:block;margin:.35rem 0 .1rem;letter-spacing:-.01em;line-height:1}
+.front small{font-size:.78rem;color:var(--t-meta);display:block}
+@media(max-width:640px){.fronts{grid-template-columns:1fr}}
+
+/* the two campaign standards — MOBILISED (wk3) / GRADUATED (day90) */
+.marks{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.6rem;max-width:620px}
+.mark{flex:1 1 240px;border:1px solid var(--line);border-radius:4px;background:var(--raised);padding:1rem 1.15rem;position:relative}
+.mark::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--edge);pointer-events:none}
+.mark .code{color:var(--bronze);display:block}
+.mark b{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.5rem;color:var(--t-hi);display:block;margin:.3rem 0 .15rem;letter-spacing:-.01em;line-height:1}
+.mark small{font-size:.82rem;color:var(--t-meta)}
+
+/* objections — "you're probably thinking…" (⑮) */
+.objections{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:1.8rem;max-width:760px}
+.obj{background:var(--raised);padding:1.2rem 1.3rem}
+.obj .q{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;font-size:1.12rem;color:var(--t-hi);line-height:1.05;max-width:none}
+.obj .a{font-size:.95rem;color:var(--t-body);margin-top:.5rem}
+
+/* founder holding frame — registration marks, NOT a faked face (§7 / §9.3) */
+.holdframe{position:relative}
+.holdframe::before,.holdframe::after{content:"";position:absolute;width:14px;height:14px;border:1px solid var(--bronze);opacity:.55;pointer-events:none}
+.holdframe::before{top:9px;left:9px;border-right:0;border-bottom:0}
+.holdframe::after{bottom:9px;right:9px;border-left:0;border-top:0}
+.holdmark{color:var(--t-meta);opacity:.5}
+.holdframe .code{text-align:center;padding:0 .6rem}
+
+/* static brass seal (#16 — shipped in its already-pressed state; no shared JS to fire the press) */
+.seal{display:inline-flex;align-items:center;gap:.65rem;margin-top:1.4rem;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
+.seal svg{width:34px;height:34px;color:var(--bronze);flex:none}
+
+.for-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:1.6rem}
 </style>
 </head>
 <body>
@@ -20,7 +60,7 @@
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
     <a class="brand" href="index.html" aria-label="The Next Mission home">
-      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.92)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.92)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
       <b>THE NEXT MISSION</b>
     </a>
     <div class="nav-links">
@@ -28,47 +68,59 @@
       <a href="manual.html">Manual</a>
       <a href="brotherhood.html">Brotherhood</a>
       <a href="about.html">About</a>
+      <button class="theme-toggle" id="themetoggle" type="button" aria-pressed="false" aria-label="Switch to day mode" title="Day / Night mode">
+        <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+        <span class="tt-label">Night</span>
+      </button>
       <a class="btn" href="join.html#call">Request a Briefing Call</a>
     </div>
   </div>
 </nav>
 
-<div class="intake-bar">NEXT INTAKE: CLASS 26-08 · FOUNDING · 20 PLACES · DATE ANNOUNCED TO APPLICANTS FIRST — <a href="join.html#call">REQUEST A BRIEFING CALL</a></div>
+<!-- sticky intake bar — restyled NON-RED (§4j): chalk-mono on --panel + bronze top edge-light -->
+<div class="intake-bar">NEXT INTAKE: <strong>CLASS 26-08</strong> · FOUNDING · 20 PLACES · DATE ANNOUNCED TO APPLICANTS FIRST — <a href="join.html#call">REQUEST A BRIEFING CALL</a></div>
 
 <main>
 
-<section class="glow" style="border-top:0">
+<!-- 01 · HERO — corrected campaign headline + spec + armed CTA; the page's one glow (neutral, night only) -->
+<section class="glow band-air" style="border-top:0">
   <div class="wrap">
     <span class="code" data-scramble>PRG-01 / TNM-90 · THE COHORT</span>
-    <h1 class="hero-h1">90 Days. Twelve&nbsp;Calls. One&nbsp;Standard.</h1>
-    <p class="lead" style="margin-top:1.4rem">The full Next Mission operation, run as a named class of twenty. Nine domains, twelve weekly missions, a fixed daily load of <strong>35 minutes</strong> — and a gate every week that does not open until your SITREP is posted.</p>
+    <h1 class="hero-h1">3 Weeks Live Training. 10 Weeks on Operations. One&nbsp;Campaign.</h1>
+    <p class="lead" style="margin-top:1.4rem">The full Next Mission operation, run as a named class of twenty. Six live calls in three weeks train all nine fronts and install the battle rhythm; then ten weeks on operations with the section behind you — a fixed daily load of <strong>35 minutes</strong> and a gate every week that does not open until your SITREP is posted.</p>
     <p class="doctrine" style="margin-top:1.2rem">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
     <div class="spec">
+      <div class="spec-row"><span class="k">Live Calls</span><span class="v brass">6 × 2 hrs · Weeks 1–3</span></div>
       <div class="spec-row"><span class="k">Format</span><span class="v">90-Day Cohort</span></div>
-      <div class="spec-row"><span class="k">Intake</span><span class="v brass">20 Men</span></div>
-      <div class="spec-row"><span class="k">Cadence</span><span class="v">Weekly Live Calls</span></div>
+      <div class="spec-row"><span class="k">Intake</span><span class="v">20 Men</span></div>
       <div class="spec-row"><span class="k">Daily Load</span><span class="v">35 Min</span></div>
-      <div class="spec-row"><span class="k">Investment</span><span class="v">£497</span></div>
+      <div class="spec-row"><span class="k">Cost</span><span class="v">£497</span></div>
     </div>
     <a class="btn" href="join.html#call">Request a Briefing Call</a>
   </div>
 </section>
 
-<section>
+<!-- 02 · THE PROBLEM — redaction declassify over an atmospheric cinematic band (B2) -->
+<section class="band-scene" aria-labelledby="prob-h">
+  <div class="scene-media" aria-hidden="true">
+    <img src="assets/scenes/hero-02-noorders.jpg" alt="" width="1672" height="941" loading="lazy" decoding="async">
+  </div>
+  <span class="scene-scrim left" aria-hidden="true"></span>
   <div class="wrap reveal">
     <span class="code" data-scramble>PRG-02 / THE PROBLEM</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">What actually happened when you got out</h2>
+    <h2 id="prob-h" class="sec-h" style="max-width:20ch">What actually happened when you got out</h2>
     <div class="redact" style="margin-top:1.8rem">
       <p>You served inside a structure that told you where to be, what standard to meet, and who had your back. Then you handed back your MOD 90, the structure went away, and <span class="blk">the mission went with it</span>. The problem was never skill — you have more trained skill than most civilians will build in a lifetime. What you lost is <span class="blk">a mission with a standard attached</span>. When the mission goes, identity drifts; when identity drifts, <span class="blk">pride erodes</span> — and drift feels like patience for about the first six months. Out here nobody assigns you hard things, nobody checks, and that slide <span class="blk">does not fix itself</span>.</p>
-      <span class="hint">HOVER OR TAP TO DECLASSIFY</span>
+      <span class="hint">Hover to declassify · tap to reveal all</span>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 03 · THE OPERATION — phase diagram + the nine fronts (B4) -->
+<section class="band-air">
   <div class="wrap reveal">
     <span class="code" data-scramble>PRG-03 / THE OPERATION</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Three phases, one rhythm</h2>
+    <h2 class="sec-h">Three phases, one rhythm</h2>
     <p class="lead" style="margin-top:1rem">The 90 days run as one operation: stabilise the base, build the systems, then turn outward. Every phase closes on a scorecard checkpoint.</p>
     <div class="fig">
       <div class="phases">
@@ -93,14 +145,83 @@
       </div>
       <p class="fig-cap">FIG. 1 — THE 90-DAY OPERATION</p>
     </div>
+
+    <span class="code" style="display:block;margin-top:2.6rem">THE NINE FRONTS · ONE STANDARD EACH</span>
+    <div class="fronts">
+      <div class="front"><span class="code">CH01</span><b>Health</b><small>Energy is the budget every other front spends from.</small></div>
+      <div class="front"><span class="code">CH02</span><b>Mission &amp; Goals</b><small>No written order, no mission. Target, Why, Battle Plan.</small></div>
+      <div class="front"><span class="code">CH03</span><b>Unlocking Potential</b><small>The Three Levers and the 30-day Retraining Loop.</small></div>
+      <div class="front"><span class="code">CH04</span><b>Financial Command</b><small>Know your number. Audit, automate, two plans. Education, not advice.</small></div>
+      <div class="front"><span class="code">CH05</span><b>Leadership</b><small>Rank is gone; influence is not. Service and modelling.</small></div>
+      <div class="front"><span class="code">CH06</span><b>Relationships</b><small>Isolation is the quiet killer. The audit, the calls, presence.</small></div>
+      <div class="front"><span class="code">CH07</span><b>Happiness</b><small>Lost significance is the root wound. Root-cause work.</small></div>
+      <div class="front"><span class="code">CH08</span><b>Thriving in Chaos</b><small>Warriors prepare. The pre-mortem, the binder, reserves.</small></div>
+      <div class="front"><span class="code">CH09</span><b>Legacy</b><small>The Legacy Letter, the man one tour behind you, the decision.</small></div>
+    </div>
+    <p class="fig-cap">FIG. 2 — THE NINE DOMAINS OF THE MANUAL. THE SIX CALLS TRAIN ALL NINE.</p>
   </div>
 </section>
 
-<section>
+<!-- 04 · MOBILISATION — the six live calls (LT-01…LT-06); ends with an armed CTA -->
+<section class="band-doc">
   <div class="wrap reveal">
-    <span class="code" data-scramble>PRG-04 / TWELVE MISSIONS</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Week by week</h2>
-    <p class="lead" style="margin-top:1rem">Each week is one mission with a written gate: the SITREP. Alongside it runs the standing Battle Rhythm — and the daily stack <span class="crosshair">never grows</span>.</p>
+    <span class="code" data-scramble>PRG-04 / MOBILISATION · THE SIX CALLS</span>
+    <h2 class="sec-h">Six calls. Three weeks. All nine fronts.</h2>
+    <p class="lead" style="margin-top:1rem">Two 2-hour Zoom calls a week for the first three weeks — the live training phase inside the cohort. This is where the manual is trained to standard, the battle rhythm goes in, and the section forms. Then you march out onto ten weeks of operations with it.</p>
+
+    <div class="record" style="margin-top:1.8rem;max-width:820px">
+      <div class="record-row"><span class="k">LT-01</span><span class="v"><strong>First Parade</strong> — front matter and Health (CH01). The Day-0 readiness assessment, baselines logged, the Battle Rhythm (BR.1–BR.5) installed.</span></div>
+      <div class="record-row"><span class="k">LT-02</span><span class="v"><strong>Orders</strong> — Mission &amp; Goals (CH02). The 90-Day Mission Order written live: Target, Why, Battle Plan, read every morning from here on.</span></div>
+      <div class="record-row"><span class="k">LT-03</span><span class="v"><strong>The Inner Fight</strong> — Unlocking Potential (CH03) and Thriving in Chaos (CH08). The Three Levers, the Retraining Loop, holding state at the point of failure.</span></div>
+      <div class="record-row"><span class="k">LT-04</span><span class="v"><strong>Financial Command</strong> — Money (CH04). Chokehold audit on real statements, one automatic transfer live, the two-plan strategy. Education, not advice.</span></div>
+      <div class="record-row"><span class="k">LT-05</span><span class="v"><strong>The Section</strong> — Leadership (CH05) and Relationships (CH06). Influence over rank, the relationship audit, and the fire teams formed for the ten weeks ahead.</span></div>
+      <div class="record-row"><span class="k">LT-06</span><span class="v"><strong>March-Out Orders</strong> — Happiness (CH07) and Legacy (CH09), plus the 90-day campaign plan you march out on. The end of the live phase, the start of operations.</span></div>
+    </div>
+
+    <h3 style="font-size:1.4rem;margin-top:2.6rem">Every call runs the same shape</h3>
+    <p class="lead" style="margin-top:.6rem">Two hours, drilled: 15 in, 60 on the main effort, 30 in the fire teams, 15 out with orders.</p>
+    <div class="sched" style="margin-top:1.2rem">
+      <div class="sched-row"><span class="t">0–15 MIN</span><span class="d"><b>Cold open</b> — last week's SITREPs on the table: wins, misses, who went quiet.</span></div>
+      <div class="sched-row"><span class="t">15–75 MIN</span><span class="d"><b>Main effort</b> — the front trained live, drills demonstrated to standard.</span></div>
+      <div class="sched-row"><span class="t">75–105 MIN</span><span class="d"><b>Syndicate work</b> — fire-team breakouts; your own numbers, worked in the room.</span></div>
+      <div class="sched-row"><span class="t">105–120 MIN</span><span class="d"><b>March-out orders</b> — the week's drill orders issued; the gate to the next call set.</span></div>
+    </div>
+
+    <div class="advisory brass" style="margin-top:1.8rem">
+      <span class="code">STANDARD — HOW THE LIVE PHASE RUNS</span>
+      <ul>
+        <li>Two 2-hour calls a week, weeks 1–3 — six calls, capped at twenty men</li>
+        <li>Recordings posted within 24 hours; catch-up is watch, then post a session SITREP</li>
+        <li>Attendance floor: five of six calls live — the section needs you in the room</li>
+        <li>The full call calendar is published before checkout — you know every date before you commit</li>
+      </ul>
+    </div>
+
+    <h3 style="font-size:1.4rem;margin-top:2.6rem">Two honest standards mark the campaign</h3>
+    <div class="marks">
+      <div class="mark">
+        <span class="code">END OF WEEK 3</span>
+        <b>Mobilised</b>
+        <small>Kit trained, rhythm installed, mission written. You have completed the live phase and are ready to operate.</small>
+      </div>
+      <div class="mark">
+        <span class="code">DAY 90</span>
+        <b>Graduated</b>
+        <small>Four scorecards on record — Day 0, 30, 60, 90 — and a next-mission order written. The campaign finished.</small>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:2.4rem">You're not buying a place. You're asking for one. Class 26-08 · 20 places.</p>
+    <a class="btn" href="join.html#call" style="margin-top:1.2rem">Request a Briefing Call</a>
+  </div>
+</section>
+
+<!-- 05 · TWELVE MISSIONS — sticky-scroll walk with the pinned battle rhythm (of the MANUAL's execution arc) -->
+<section class="band-air">
+  <div class="wrap reveal">
+    <span class="code" data-scramble>PRG-05 / TWELVE MISSIONS</span>
+    <h2 class="sec-h">Ten weeks on operations, week by week</h2>
+    <p class="lead" style="margin-top:1rem">After the live phase, the manual runs as twelve weekly missions — each one a written gate: the SITREP. Alongside it runs the standing Battle Rhythm, and the daily stack <span class="crosshair">never grows</span>.</p>
     <div class="sticky-walk" style="margin-top:2rem">
       <div>
         <div class="walk-step">
@@ -181,12 +302,19 @@
   </div>
 </section>
 
-<section>
+<!-- 06 · PROOF — lead with Chris's before/after ⑰, then the DAY001→090 slider, then the model chart #5 -->
+<section class="band-doc">
   <div class="wrap reveal">
-    <span class="code" data-scramble>PRG-05 / DAY 001 — DAY 090</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">The same man, on the record</h2>
-    <p class="lead" style="margin-top:1rem">Not a transformation promise — a change of state. Day 90 is what 90 logged days look like on paper. Drag the line.</p>
-    <div class="compare" style="margin-top:2rem">
+    <span class="code" data-scramble>PRG-06 / THE STANDARD IS A MAN, NOT A CURVE</span>
+
+    <blockquote style="font-size:clamp(1.4rem,3.4vw,2rem);color:var(--t-hi);max-width:32ch;font-family:var(--font-display);text-transform:uppercase;font-weight:700;line-height:1.08;letter-spacing:-.01em;margin:.6rem 0 1.2rem">
+      One name is already on this roll. Mine. I'm not asking you to do anything I didn't do first.
+    </blockquote>
+    <p class="lead">British Army veteran. The drift after discharge was real — I know the slide from the inside. Twenty-odd years in business and £200k+ of my own training later, this is the operation I wish I'd been handed. I refuse to guess with other men's lives: everything here was tested on me first, stripped of the theatre. <a class="textlink" href="about.html">Read the full dossier →</a></p>
+
+    <h3 style="font-size:1.4rem;margin-top:2.6rem">The same man, on the record</h3>
+    <p class="lead" style="margin-top:.6rem">Not a transformation promise — a change of state. Day 90 is what 90 logged days look like on paper. Drag the line.</p>
+    <div class="compare" style="margin-top:1.6rem">
       <div class="pane">
         <ul>
           <li>No written mission — the week runs you</li>
@@ -209,49 +337,138 @@
       <span class="tag r">DAY 090</span>
       <div class="handle" aria-hidden="true"></div>
     </div>
+
+    <!-- 0/30/60/90 Trajectory Chart — brass readiness dial (§5 #5), labelled THE MODEL -->
+    <figure class="traj" aria-label="The model: 0/30/60/90 readiness trajectory. Not member results.">
+      <div class="traj-head">
+        <span class="label">The Model — Not Member Results</span>
+        <span class="sub">Readiness index · Day 0 / 30 / 60 / 90</span>
+      </div>
+      <svg viewBox="0 0 640 300" aria-hidden="true">
+        <line class="grid" x1="60" y1="60" x2="610" y2="60"/>
+        <line class="grid" x1="60" y1="150" x2="610" y2="150"/>
+        <line class="axis" x1="60" y1="240" x2="610" y2="240"/>
+        <path class="plot" d="M60 192 L240 146 L420 96 L600 60"/>
+        <circle class="node" cx="60" cy="192" r="5"/>
+        <circle class="node" cx="240" cy="146" r="5"/>
+        <circle class="node" cx="420" cy="96" r="5"/>
+        <circle class="node" cx="600" cy="60" r="5"/>
+        <text class="val" data-count="24" x="60" y="176" text-anchor="middle">24</text>
+        <text class="val" data-count="47" x="240" y="130" text-anchor="middle">47</text>
+        <text class="val" data-count="72" x="420" y="80" text-anchor="middle">72</text>
+        <text class="val" data-count="90" x="600" y="44" text-anchor="middle">90</text>
+        <text class="daycode" x="60" y="262" text-anchor="middle">DAY 000</text>
+        <text class="daycode" x="240" y="262" text-anchor="middle">DAY 030</text>
+        <text class="daycode" x="420" y="262" text-anchor="middle">DAY 060</text>
+        <text class="daycode" x="600" y="262" text-anchor="middle">DAY 090</text>
+      </svg>
+      <figcaption class="traj-foot">Provisional. The model is the standard the class is measured against — real deltas replace it once Class 26-08 lands. Where a funnel puts five gold stars, we put the numbers.</figcaption>
+    </figure>
+
+    <div class="advisory" style="margin-top:1.8rem">
+      <span class="code">NOTE — THIS SECTION READS PROVISIONAL</span>
+      <p>No graduates exist yet: Class 26-08 is the founding intake. The chart above is the model, not evidence of results, and Chris's is the one real, named record on the roll so far. When the first class produces real deltas, the model line is replaced with plotted points.</p>
+    </div>
   </div>
 </section>
 
-<section>
+<!-- 07 · THE INVOICE — atmospheric close band ⑦ (value-as-cost) + the one red CTA -->
+<section class="band-scene" aria-labelledby="inv-h">
+  <div class="scene-media" aria-hidden="true">
+    <img src="assets/scenes/hero-06-reachback.jpg" alt="" width="1672" height="941" loading="lazy" decoding="async">
+  </div>
+  <span class="scene-scrim center" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="close-copy reveal">
+      <span class="code" data-scramble>PRG-07 / THE INVOICE</span>
+      <h2 id="inv-h" class="big" style="margin:.7rem 0 1.5rem">Drift is expensive. You just pay it in months instead of pounds — and you never see the invoice.</h2>
+      <a class="btn" href="join.html#call">Request a Briefing Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · THE MAN RUNNING IT — condensed coach dossier (#12), holding-frame portrait, static seal (#16) -->
+<section class="band-air">
   <div class="wrap reveal">
-    <span class="code" data-scramble>PRG-06 / THE MAN RUNNING IT</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">One coach. Twenty men.</h2>
+    <span class="code" data-scramble>PRG-08 / THE MAN RUNNING IT</span>
+    <h2 class="sec-h">One coach. Twenty men.</h2>
     <div class="dossier" style="margin-top:1.8rem">
-      <div class="id-photo" style="max-width:240px">
-        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.4)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.4)"/><path d="M20 34 L48 18 L76 34" stroke="rgba(255,255,255,.4)"/></g></svg>
-        <span class="code">PLATE 01 — TO BE SHOT</span>
+      <div class="id-photo holdframe" aria-label="Founder portrait — holding frame, photography in preparation">
+        <svg class="holdmark" width="34" height="34" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="currentColor"/></g></svg>
+        <span class="code">PLATE 01 · FOUNDER PORTRAIT · IN PREPARATION</span>
       </div>
       <div>
         <p>The Next Mission is written and run by <strong>Chris Frost</strong>. He takes the briefing calls himself, and the cohort is capped at twenty so the man who wrote the manual can actually know the class.</p>
-        <p style="margin-top:.8rem">No team of closers, no hand-off after you pay. One manual, one standard, one man on the other end.</p>
+        <p style="margin-top:.9rem">No team of closers, no hand-off after you pay. One manual, one standard, one man on the other end.</p>
+        <div class="record" style="margin-top:1.4rem;max-width:520px">
+          <div class="record-row"><span class="k">Name</span><span class="v">Chris Frost</span></div>
+          <div class="record-row"><span class="k">Service</span><span class="v">British Army veteran</span></div>
+          <div class="record-row"><span class="k">Record</span><span class="v">20+ years in business</span></div>
+          <div class="record-row"><span class="k">Own training</span><span class="v">£200k+ invested</span></div>
+          <div class="record-row"><span class="k">Runs</span><span class="v">Every briefing call, personally</span></div>
+        </div>
+        <span class="seal"><svg viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="42" stroke="currentColor" stroke-width="2"/><circle cx="48" cy="48" r="34" stroke="currentColor" stroke-width="1" opacity=".55"/><g stroke="currentColor" stroke-width="6" stroke-linecap="square"><path d="M30 58 L48 47 L66 58"/><path d="M30 47 L48 36 L66 47"/></g></svg>ISSUED · TNM DIRECTING STAFF</span>
         <p style="margin-top:1.4rem"><a class="textlink" href="about.html">Read the founder dossier</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 09 · NOMINAL ROLL — "EARNED, NEVER GIVEN" honesty frame ⑨ -->
+<section class="band-doc">
   <div class="wrap reveal">
-    <span class="code" data-scramble>PRG-07 / NOMINAL ROLL</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Mission logs</h2>
-    <p class="lead" style="margin-top:1rem">Graduate records appear here in nominal-roll format — name, service, one-line outcome. Anonymous quotes are banned on this site.</p>
+    <span class="code" data-scramble>PRG-09 / NOMINAL ROLL</span>
+    <h2 class="sec-h">Earned, never given</h2>
+    <p class="lead" style="margin-top:1rem">Graduate records appear here in nominal-roll format — real name, real service, one-line delta. Anonymous quotes are banned on this site.</p>
     <div class="advisory brass" style="margin-top:1.6rem">
-      <span class="code">NOTE — RECORDS PENDING</span>
-      <p>Cohort records published as classes graduate; Class 26-08 is the founding intake.</p>
+      <span class="code">STANDARD — EARNED, NEVER GIVEN</span>
+      <p>No stock photos of strangers. No five stars from nobody. The only names on this roll will be men who finished — real name, real service, real delta. Class 26-08 writes the first line.</p>
     </div>
   </div>
 </section>
 
-<section>
+<!-- 10 · OBJECTIONS — "you're probably thinking…" ⑮ (B7) -->
+<section class="band-air">
   <div class="wrap reveal">
-    <span class="code" data-scramble>PRG-08 / ELIGIBILITY</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Read this before you apply</h2>
-    <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:1.6rem">
+    <span class="code" data-scramble>PRG-10 / YOU'RE PROBABLY THINKING…</span>
+    <h2 class="sec-h">Said flat, answered flat</h2>
+    <div class="objections">
+      <div class="obj">
+        <p class="q">"I've done the courses. None of them get the military."</p>
+        <p class="a">This one was written by someone who handed his kit back too. It's in your language and it assumes you can already do hard things.</p>
+      </div>
+      <div class="obj">
+        <p class="q">"I'm past the motivational stuff."</p>
+        <p class="a">So are we. There isn't any. Drills, a scorecard, and men who notice when you go quiet.</p>
+      </div>
+      <div class="obj">
+        <p class="q">"£497 is a lot right now."</p>
+        <p class="a">It is. It's also less than a month of drifting. If money's the real blocker, say so on the call — a few named places exist every class.</p>
+      </div>
+      <div class="obj">
+        <p class="q">"I haven't got the time."</p>
+        <p class="a">Thirty-five minutes a day, and it never grows. If a week feels heavy, you've added things the programme didn't ask for.</p>
+      </div>
+      <div class="obj">
+        <p class="q">"What if I start and drop off?"</p>
+        <p class="a">Your section notices by Wednesday. That's the mechanism, not the marketing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · ELIGIBILITY — for-you / NOT-for-you (B6) -->
+<section class="band-doc">
+  <div class="wrap reveal">
+    <span class="code" data-scramble>PRG-11 / ELIGIBILITY</span>
+    <h2 class="sec-h">Read this before you apply</h2>
+    <div class="for-grid">
       <div class="advisory brass">
         <span class="code">STANDARD — THE COHORT IS FOR YOU IF</span>
         <ul>
           <li>You served — any service, any trade, regular or reserve</li>
           <li>You can hold 35 minutes a day for 90 days</li>
+          <li>You can make five of the six live calls in weeks 1–3</li>
           <li>You'll post a weekly SITREP to your section</li>
           <li>You want a mission, not services</li>
         </ul>
@@ -268,31 +485,46 @@
   </div>
 </section>
 
-<section>
+<!-- 12 · THE DECISION — spec repeat + armed CTA + summons ⑫ (B8) -->
+<section class="band-air">
   <div class="wrap reveal">
-    <span class="code" data-scramble>PRG-09 / THE DECISION</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Do it all, or don't start</h2>
-    <p class="lead" style="margin-top:1rem">That is the manual's own instruction, and it applies to the cohort twice over. The £497 is never bought from a button — the route in is a twenty-minute call with Chris, straight questions both ways.</p>
+    <span class="code" data-scramble>PRG-12 / THE DECISION</span>
+    <h2 class="big" style="margin-top:.5rem">Do it all, or don't start</h2>
+    <p class="lead" style="margin-top:1rem">That is the manual's own instruction, and it applies to the cohort twice over. Nobody out here is going to order you to do this. That's rather the point. The £497 is never bought from a button — the route in is a twenty-minute call with Chris, straight questions both ways.</p>
     <div class="spec">
+      <div class="spec-row"><span class="k">Live Calls</span><span class="v brass">6 × 2 hrs · Weeks 1–3</span></div>
       <div class="spec-row"><span class="k">Format</span><span class="v">90-Day Cohort</span></div>
-      <div class="spec-row"><span class="k">Intake</span><span class="v brass">20 Men</span></div>
-      <div class="spec-row"><span class="k">Cadence</span><span class="v">Weekly Live Calls</span></div>
+      <div class="spec-row"><span class="k">Intake</span><span class="v">20 Men</span></div>
       <div class="spec-row"><span class="k">Daily Load</span><span class="v">35 Min</span></div>
-      <div class="spec-row"><span class="k">Investment</span><span class="v">£497</span></div>
+      <div class="spec-row"><span class="k">Cost</span><span class="v">£497</span></div>
     </div>
     <a class="btn" href="join.html#call">Request a Briefing Call</a>
-    <p style="margin-top:1.2rem"><a class="textlink" href="manual.html">Or read the field manual first</a></p>
+    <p class="fine" style="color:var(--t-meta);font-size:.82rem;margin-top:1rem">You're not buying a place. You're asking for one. Class 26-08 · 20 places.</p>
+    <p style="margin-top:1rem"><a class="textlink" href="manual.html">Or read the field manual first</a></p>
   </div>
 </section>
 
-<section>
+<!-- 13 · FAQ — refuses workarounds; + three Mobilisation FAQs; warmed openers ⑯ -->
+<section class="band-doc">
   <div class="wrap reveal">
-    <span class="code" data-scramble>PRG-10 / STRAIGHT ANSWERS</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Questions with one answer</h2>
+    <span class="code" data-scramble>PRG-13 / STRAIGHT ANSWERS</span>
+    <h2 class="sec-h">Questions with one answer</h2>
     <div class="faq">
       <details>
+        <summary>When are the six calls?</summary>
+        <p>Two 2-hour calls a week for the first three weeks — the live training phase. The full calendar is published before you're asked to commit, so you know every date before you pay a penny.</p>
+      </details>
+      <details>
+        <summary>What if I miss a call?</summary>
+        <p>Recordings go up within 24 hours, and catch-up is watch it, then post your session SITREP. But the floor is five of six live — the section can't cover for a man who's never in the room.</p>
+      </details>
+      <details>
+        <summary>Is this a separate course from the manual?</summary>
+        <p>No. The six calls are the live front door of the same 90-day cohort — they train the manual you then run for the next ten weeks. One product, one price, one campaign.</p>
+      </details>
+      <details>
         <summary>Can I skip the SITREPs?</summary>
-        <p>No. The SITREP is the programme. The gate to the next week does not open until it's posted — a gate you skip is a programme you quit quietly.</p>
+        <p>No — and here's why that's the point: the SITREP is the programme. The gate to the next week does not open until it's posted. A gate you skip is a programme you quit quietly.</p>
       </details>
       <details>
         <summary>Can I do it in less than 35 minutes a day?</summary>
@@ -312,6 +544,7 @@
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="advisory signal" style="margin-bottom:2rem;max-width:none">
@@ -320,16 +553,16 @@
     </div>
     <div class="foot">
       <div>
-        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.4)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.4)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
         <p class="doctrine" style="margin-top:.8rem">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
-        <p class="fine">TNM-FM-01 · Civilian Warrior Brotherhood · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
+        <p class="fine">TNM-FM-01 · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
       </div>
       <nav aria-label="Footer">
         <a href="programme.html">PROGRAMME</a>
         <a href="manual.html">MANUAL</a>
         <a href="brotherhood.html">BROTHERHOOD</a>
         <a href="about.html">ABOUT</a>
-        <a href="index.html">HOME</a>
+        <a href="join.html">JOIN</a>
         <a href="privacy.html">PRIVACY</a>
         <a href="terms.html">TERMS</a>
         <a href="https://chrisfrost.coach">CHRISFROST.COACH</a>

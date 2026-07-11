@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Next Mission — Civilian Warrior Brotherhood</title>
+<title>The Next Mission — the field manual for the fight after service</title>
 <meta name="description" content="A 90-day field manual for the fight after service. Built for British veterans. The mission changed. The standard didn't.">
+<!-- no-flash day/night init — MUST run in <head> before paint, inlined on every page -->
+<script>(function(){try{var t=localStorage.getItem('tnm-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="theme-color" content="#1C1613">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -16,7 +19,7 @@
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
     <a class="brand" href="index.html" aria-label="The Next Mission home">
-      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.92)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.92)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
       <b>THE NEXT MISSION</b>
     </a>
     <div class="nav-links">
@@ -24,6 +27,10 @@
       <a href="manual.html">Manual</a>
       <a href="brotherhood.html">Brotherhood</a>
       <a href="about.html">About</a>
+      <button class="theme-toggle" id="themetoggle" type="button" aria-pressed="false" aria-label="Switch to day mode" title="Day / Night mode">
+        <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+        <span class="tt-label">Night</span>
+      </button>
       <a class="btn" href="join.html#call">Request a Briefing Call</a>
     </div>
   </div>
@@ -31,15 +38,17 @@
 
 <main>
 
-<!-- 01 · HERO — the 40-second briefing film is the hero object; the page's one glow sits behind it -->
-<section class="glow" style="text-align:center;border-top:0">
-  <div class="wrap">
+<!-- 01 · HERO — the 40-second briefing film is the hero object, full-bleed + vignetted;
+     the page's one glow (neutral warm-white key light, night only) sits behind it -->
+<section class="hero glow band-air">
+  <div class="wrap hero-in">
     <span class="code" data-scramble>TNM-01 / FIELD MANUAL FOR THE FIGHT AFTER SERVICE</span>
-    <h1 style="font-size:clamp(3rem,7vw,5.6rem);margin:.3em 0 .35em">The Next Mission</h1>
-    <p class="doctrine" style="margin-bottom:2.2rem">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
+    <h1 class="hero-h1">Nobody chooses the transition. You choose how you meet it.</h1>
+    <p class="doctrine">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
+  </div>
 
+  <div class="film-frame">
     <figure class="film" id="film">
-      <div class="film-chrome"><span class="code">BRIEFING · TNM-VID-01</span><span class="code">0:40</span></div>
       <video id="herovid" poster="assets/films/hero-poster.jpg" preload="metadata" playsinline controls controlslist="nodownload noplaybackrate">
         <source src="assets/films/hero.mp4" type="video/mp4">
         Your browser can't play embedded video. <a href="assets/films/hero.mp4">Open the briefing film</a>.
@@ -50,42 +59,102 @@
         <span class="code">WHAT THIS IS · HOW IT WORKS · WHO IT'S FOR</span>
       </button>
     </figure>
+  </div>
 
-    <div style="margin-top:2.2rem">
-      <a class="btn" href="join.html#call">Request a Briefing Call</a>
+  <div class="wrap hero-cta">
+    <a class="btn" href="join.html#call">Request a Briefing Call</a>
+    <p class="fine">You're not buying a place. You're asking for one. Class 26-08 · 20 places.</p>
+  </div>
+</section>
+
+<!-- 02 · THE STANDARD — line-by-line manifesto creed (§5 #7); recognition ② + reframe ④ -->
+<section class="manifesto band-air">
+  <div class="wrap">
+    <span class="code" data-scramble>TNM-02 / THE STANDARD</span>
+    <div class="creed">
+      <div class="creed-line"><span class="creed-code">SEC 02.1</span><span class="creed-mask"><span class="creed-txt">The uniform came off. The operator didn't.</span></span></div>
+      <div class="creed-line"><span class="creed-code">SEC 02.2</span><span class="creed-mask"><span class="creed-txt">You had the edge in uniform. Nobody took it.</span></span></div>
+      <div class="creed-line"><span class="creed-code">SEC 02.3</span><span class="creed-mask"><span class="creed-txt">It just lost its orders.</span></span></div>
+      <div class="creed-line"><span class="creed-code">SEC 02.4</span><span class="creed-mask"><span class="creed-txt">The next mission is yours to take.</span></span></div>
     </div>
+  </div>
+</section>
 
-    <!-- 02 · PROVENANCE STRIP -->
-    <div class="provenance reveal" style="text-align:left">
+<!-- 03 · THE GAP — promoted gap prose ③ over an atmospheric cinematic band; redaction flashlight kept -->
+<section class="band-scene gap" aria-labelledby="gap-h">
+  <div class="scene-media" aria-hidden="true">
+    <picture>
+      <source srcset="assets/scenes/drift.webp" type="image/webp">
+      <img src="assets/scenes/drift.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <span class="scene-scrim left" aria-hidden="true"></span>
+  <div class="wrap">
+    <span class="code" data-scramble>TNM-03 / THE COST OF DRIFT</span>
+    <h2 id="gap-h" class="big gap-copy" style="margin:.7rem 0 1.5rem">Leaving costs three things the discharge papers never list: a mission, a section, and a standard with somewhere to point.</h2>
+    <div class="redact reveal gap-copy">
+      <p>What actually happened when you got out: the mission stopped, the section scattered, and the standard you carried without thinking suddenly had <span class="blk">nowhere to point</span>. Nobody re-issued it. That isn't brokenness — it's <span class="blk">waste</span>. A trained operator, idling.</p>
+      <span class="hint">Hover to declassify · tap to reveal all</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · PROVENANCE + PROOF — three facts (§4g), Chris's own before/after ⑰,
+     the 0/30/60/90 model chart #5, and the "EARNED, NEVER GIVEN" honesty frame ⑨ -->
+<section class="band-doc proof">
+  <div class="wrap reveal">
+    <span class="code" data-scramble>TNM-04 / THE STANDARD IS A MAN, NOT A CURVE</span>
+
+    <div class="provenance">
       <div class="prov"><b>90</b><span>Days · one operation</span></div>
       <div class="prov"><b>9</b><span>Fronts · one campaign</span></div>
       <div class="prov"><b>20+</b><span>Years in business</span></div>
-      <div class="prov"><b>£200k+</b><span>Invested in training</span></div>
-      <div class="prov"><b>26-08</b><span>Founding intake · 20 places</span></div>
     </div>
-  </div>
-</section>
 
-<!-- 03 · PROOF (honest: founding intake — records published as classes graduate) -->
-<section>
-  <div class="wrap reveal">
-    <span class="code" data-scramble>TNM-02 / THE STANDARD</span>
-    <blockquote style="font-size:clamp(1.3rem,3vw,1.8rem);color:var(--t-hi);max-width:34ch;font-family:var(--font-display);text-transform:uppercase;font-weight:700;line-height:1.15;margin:1rem 0 1.2rem">
-      "If you're looking for someone to motivate you with platitudes, I'm the wrong coach. If you're ready to do <span class="crosshair">the actual work</span>, let's talk."
+    <blockquote style="font-size:clamp(1.4rem,3.4vw,2rem);color:var(--t-hi);max-width:30ch;font-family:var(--font-display);text-transform:uppercase;font-weight:700;line-height:1.08;letter-spacing:-.01em;margin:0 0 1rem">
+      One name is already on this roll. Mine. I'm not asking you to do anything I didn't do first.
     </blockquote>
-    <p class="code">— CHRIS FROST · CHRISFROST.COACH</p>
-    <div class="advisory brass" style="margin-top:2rem">
-      <span class="code">NOTE — NOMINAL ROLL</span>
-      <p>Cohort records are published as classes graduate: name, service, years, outcome. Class 26-08 is the founding intake — its roll will be the first. We don't print anonymous praise.</p>
+    <p class="lead" style="margin-bottom:1.4rem">British Army veteran. The drift after discharge was real; twenty-odd years in business and £200k+ of my own training later, this is the operation I wish I'd been handed. <a class="textlink" href="about.html">Read the full dossier →</a></p>
+
+    <!-- 0/30/60/90 Trajectory Chart — brass readiness dial (§5 #5), labelled THE MODEL -->
+    <figure class="traj" aria-label="The model: 0/30/60/90 readiness trajectory. Not member results.">
+      <div class="traj-head">
+        <span class="label">The Model — Not Member Results</span>
+        <span class="sub">Readiness index · Day 0 / 30 / 60 / 90</span>
+      </div>
+      <svg viewBox="0 0 640 300" aria-hidden="true">
+        <line class="grid" x1="60" y1="60" x2="610" y2="60"/>
+        <line class="grid" x1="60" y1="150" x2="610" y2="150"/>
+        <line class="axis" x1="60" y1="240" x2="610" y2="240"/>
+        <path class="plot" d="M60 192 L240 146 L420 96 L600 60"/>
+        <circle class="node" cx="60" cy="192" r="5"/>
+        <circle class="node" cx="240" cy="146" r="5"/>
+        <circle class="node" cx="420" cy="96" r="5"/>
+        <circle class="node" cx="600" cy="60" r="5"/>
+        <text class="val" data-count="24" x="60" y="176" text-anchor="middle">24</text>
+        <text class="val" data-count="47" x="240" y="130" text-anchor="middle">47</text>
+        <text class="val" data-count="72" x="420" y="80" text-anchor="middle">72</text>
+        <text class="val" data-count="90" x="600" y="44" text-anchor="middle">90</text>
+        <text class="daycode" x="60" y="262" text-anchor="middle">DAY 000</text>
+        <text class="daycode" x="240" y="262" text-anchor="middle">DAY 030</text>
+        <text class="daycode" x="420" y="262" text-anchor="middle">DAY 060</text>
+        <text class="daycode" x="600" y="262" text-anchor="middle">DAY 090</text>
+      </svg>
+      <figcaption class="traj-foot">Provisional. The model is the standard the class is measured against — real deltas replace it once Class 26-08 lands. Where a funnel puts five gold stars, we put the numbers.</figcaption>
+    </figure>
+
+    <div class="advisory brass" style="margin-top:2.2rem">
+      <span class="code">STANDARD — EARNED, NEVER GIVEN</span>
+      <p>No stock photos of strangers. No five stars from nobody. The only names on this roll will be men who finished — real name, real service, real delta. Class 26-08 writes the first line.</p>
     </div>
   </div>
 </section>
 
-<!-- 04 · PIPELINE -->
-<section>
+<!-- 05 · PIPELINE — three routes in, one standard -->
+<section class="band-air">
   <div class="wrap reveal">
-    <span class="code" data-scramble>TNM-03 / ROUTES IN</span>
-    <h2 style="font-size:clamp(2rem,4.5vw,3rem);margin-top:.5rem">Three routes. One standard.</h2>
+    <span class="code" data-scramble>TNM-05 / ROUTES IN</span>
+    <h2 class="big" style="margin-top:.5rem">Three routes. One standard.</h2>
     <div class="pipeline">
       <a class="pipe-node" href="manual.html">
         <span class="code">FM-01</span><b>The Manual</b>
@@ -109,9 +178,27 @@
   </div>
 </section>
 
+<!-- 06 · THE ASK — atmospheric close band ⑫ + the one red CTA -->
+<section class="band-scene close" aria-labelledby="ask-h">
+  <div class="scene-media" aria-hidden="true">
+    <picture>
+      <source srcset="assets/scenes/training.webp" type="image/webp">
+      <img src="assets/scenes/training.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <span class="scene-scrim center" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="close-copy reveal">
+      <span class="code" data-scramble>TNM-06 / THE ASK</span>
+      <h2 id="ask-h" class="big" style="margin:.7rem 0 1.5rem">Nobody out here is going to order you to do this. That's rather the point.</h2>
+      <a class="btn" href="join.html#call">Request a Briefing Call</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<!-- 05 · FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="advisory signal" style="margin-bottom:2rem;max-width:none">
@@ -120,9 +207,9 @@
     </div>
     <div class="foot">
       <div>
-        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.4)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.4)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
         <p class="doctrine" style="margin-top:.8rem">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
-        <p class="fine">TNM-FM-01 · Civilian Warrior Brotherhood · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
+        <p class="fine">TNM-FM-01 · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
       </div>
       <nav aria-label="Footer">
         <a href="programme.html">PROGRAMME</a>

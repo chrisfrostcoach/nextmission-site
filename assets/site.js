@@ -1,7 +1,38 @@
-/* The Next Mission — shared behaviour. Spec: docs/design-brief.md. */
+/* The Next Mission — shared behaviour. Spec: docs/design-brief-v2.md.
+   All vanilla, deterministic, reduced-motion safe. */
 (function () {
   "use strict";
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------------------------------------------------------- DAY / NIGHT THEME TOGGLE (§9.2)
+     The no-flash init runs inline in each page's <head> (see snippet below) and sets
+     data-theme on <html> before paint. This wires the nav control + persistence. */
+  var root = document.documentElement;
+  var META_THEME = { dark: "#1C1613", light: "#EFE9DE" };
+  function currentTheme() { return root.getAttribute("data-theme") === "light" ? "light" : "dark"; }
+  function paintToggle(t) {
+    var btn = document.getElementById("themetoggle");
+    if (!btn) return;
+    var isLight = t === "light";
+    btn.setAttribute("aria-pressed", isLight ? "true" : "false");
+    btn.setAttribute("aria-label", isLight ? "Switch to night mode" : "Switch to day mode");
+    var lbl = btn.querySelector(".tt-label");
+    if (lbl) lbl.textContent = isLight ? "Day" : "Night";
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute("content", META_THEME[t]);
+  }
+  function setTheme(t) {
+    root.setAttribute("data-theme", t);
+    try { localStorage.setItem("tnm-theme", t); } catch (e) {}
+    paintToggle(t);
+  }
+  paintToggle(currentTheme());
+  var toggle = document.getElementById("themetoggle");
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      setTheme(currentTheme() === "light" ? "dark" : "light");
+    });
+  }
 
   /* CONFIG — wire real endpoints here. Empty payment link = route to /join call form. */
   var CFG = {
@@ -27,7 +58,7 @@
     });
   }
 
-  /* [21st.dev] scramble-decrypt on mono section codes — fires once per element */
+  /* ---------------------------------------------------------------- scramble-decrypt on mono codes */
   var GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/·-";
   function scramble(el) {
     var final = el.dataset.text || el.textContent;
@@ -47,7 +78,7 @@
     })();
   }
 
-  /* reveals + scramble triggers */
+  /* ---------------------------------------------------------------- reveals + scramble triggers */
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -63,7 +94,82 @@
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* [21st.dev] comparison slider */
+  /* ---------------------------------------------------------------- MANIFESTO staggered reveal (§5 #7) */
+  document.querySelectorAll(".creed").forEach(function (creed) {
+    var lines = creed.querySelectorAll(".creed-line");
+    if (reduced || !("IntersectionObserver" in window)) {
+      lines.forEach(function (l) { l.classList.add("in"); });
+      return;
+    }
+    var mo = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        lines.forEach(function (l, i) {
+          l.style.transitionDelay = (i * 130) + "ms";
+          l.querySelectorAll(".creed-code, .creed-txt").forEach(function (n) { n.style.transitionDelay = (i * 130) + "ms"; });
+          l.classList.add("in");
+        });
+        mo.unobserve(en.target);
+      });
+    }, { threshold: 0.3 });
+    mo.observe(creed);
+  });
+
+  /* ---------------------------------------------------------------- TRAJECTORY count-up (§5 #5) */
+  document.querySelectorAll(".traj").forEach(function (traj) {
+    var vals = traj.querySelectorAll("[data-count]");
+    var plot = traj.querySelector(".plot");
+    function settle() {
+      vals.forEach(function (v) { v.textContent = v.dataset.count; });
+      if (plot) plot.style.strokeDashoffset = "0";
+    }
+    if (reduced || !("IntersectionObserver" in window)) { settle(); return; }
+    if (plot) {
+      var len = plot.getTotalLength ? plot.getTotalLength() : 0;
+      if (len) { plot.style.strokeDasharray = len; plot.style.strokeDashoffset = len; plot.style.transition = "stroke-dashoffset 1.1s var(--ease,ease)"; }
+    }
+    vals.forEach(function (v) { v.textContent = "0"; });   // start from zero; count up when observed (no-JS keeps the authored final value)
+    var to = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        if (plot) plot.style.strokeDashoffset = "0";
+        var start = null, dur = 950;
+        function tick(ts) {
+          if (start === null) start = ts;
+          var p = Math.min(1, (ts - start) / dur);
+          var e = 1 - Math.pow(1 - p, 3);
+          vals.forEach(function (v) { v.textContent = Math.round(e * parseFloat(v.dataset.count)); });
+          if (p < 1) requestAnimationFrame(tick); else settle();
+        }
+        requestAnimationFrame(tick);
+        setTimeout(settle, dur + 600);   // safety net: rAF throttles in background tabs — guarantee final values land
+        to.unobserve(en.target);
+      });
+    }, { threshold: 0.35 });
+    to.observe(traj);
+  });
+
+  /* ---------------------------------------------------------------- MAGNETIC arm-the-CTA (§5 #13)
+     <=4px pointer-follow; arm-tick is a pure CSS :hover state; magnet off under reduced-motion. */
+  if (!reduced) {
+    var MAG = 4;
+    document.querySelectorAll(".btn").forEach(function (btn) {
+      btn.addEventListener("pointermove", function (e) {
+        if (e.pointerType === "touch") return;
+        var r = btn.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+        var dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+        btn.style.setProperty("--mx", (Math.max(-1, Math.min(1, dx)) * MAG).toFixed(1) + "px");
+        btn.style.setProperty("--my", (Math.max(-1, Math.min(1, dy)) * MAG).toFixed(1) + "px");
+      });
+      btn.addEventListener("pointerleave", function () {
+        btn.style.setProperty("--mx", "0px");
+        btn.style.setProperty("--my", "0px");
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------- comparison slider */
   document.querySelectorAll(".compare").forEach(function (c) {
     function set(x) {
       var r = c.getBoundingClientRect();
@@ -74,7 +180,7 @@
     c.addEventListener("pointermove", function (e) { if (e.buttons) set(e.clientX); });
   });
 
-  /* [21st.dev] redaction flashlight — hover reveals near cursor; tap toggles all (iPad) */
+  /* ---------------------------------------------------------------- redaction flashlight */
   document.querySelectorAll(".redact").forEach(function (r) {
     r.addEventListener("pointermove", function (e) {
       if (e.pointerType === "touch") return;
@@ -87,7 +193,7 @@
     r.addEventListener("click", function () { r.classList.toggle("on"); });
   });
 
-  /* cinematic film hero (index only) — poster overlay → play with sound; native controls after */
+  /* ---------------------------------------------------------------- cinematic film hero (index) */
   var film = document.getElementById("film");
   if (film) {
     var vid = document.getElementById("herovid");

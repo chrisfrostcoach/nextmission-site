@@ -4,19 +4,65 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Join — The Next Mission</title>
-<meta name="description" content="Three routes in: the Manual (£47), the Brotherhood (£39/mo), the 90-day Cohort (£497, by briefing call).">
+<meta name="description" content="The selection gate. Three routes in — the Manual (£47), the Brotherhood (£39/mo), the 90-day Cohort (£497, by briefing call). Request a briefing call with Chris Frost.">
+<!-- no-flash day/night init — MUST run in <head> before paint, inlined on every page -->
+<script>(function(){try{var t=localStorage.getItem('tnm-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="theme-color" content="#1C1613">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="assets/site.css">
+<style>
+/* ===== join.html page-scoped CSS (spec: docs/design-brief-v2.md §6 /join) ===== */
+
+/* join's only top-nav presence is the primary CTA; aria-current on it must NOT
+   inherit the mid-nav-link colour (that would kill the chalk-white button label) */
+.nav .btn[aria-current="page"]{color:#fff}
+
+/* Split-Flap Muster Board (§5 #6) — settles ONCE to the static inventory fact,
+   never a live/decrementing count. Brass on --panel; honest by construction. */
+.muster{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;justify-content:center;margin:0 auto .7rem;max-width:100%}
+.mword{display:inline-flex;gap:.26rem}
+.msep{font-family:var(--font-mono);color:var(--t-meta);font-size:clamp(1rem,3vw,1.35rem);align-self:center}
+.flap{display:inline-flex;align-items:center;justify-content:center;width:1.1em;height:1.55em;background:var(--panel);border:1px solid var(--line);border-radius:3px;font-family:var(--font-mono);font-weight:600;font-size:clamp(1.05rem,3.4vw,1.55rem);color:var(--bronze);position:relative;overflow:hidden;font-variant-numeric:tabular-nums}
+.flap::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--edge);pointer-events:none}
+.flap.dash{background:none;border:0;color:var(--t-meta);width:.5em}
+.muster-cap{display:block;text-align:center;margin:0 auto 2.6rem}
+
+/* tier route action — Manual/Brotherhood ship as text links so the ROUTES-IN
+   viewport keeps exactly ONE red (the cohort briefing-call button, §7) */
+.tier .route{margin-top:auto;text-align:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--t-hi);text-decoration:none;border-bottom:1px solid var(--line-hover);padding-bottom:.15rem;transition:color 150ms var(--ease),border-color 150ms var(--ease);align-self:center}
+.tier .route:hover{color:var(--bronze);border-color:var(--bronze)}
+
+/* the briefing-call form + aside */
+.callgrid{display:grid;gap:2rem;grid-template-columns:1fr;align-items:start;margin-top:1.8rem}
+@media(min-width:840px){.callgrid{grid-template-columns:minmax(0,1fr) minmax(0,300px)}}
+
+/* Chris's face + call length/format WITHIN 40px of the submit (§6). Founder
+   portrait is a designed HOLDING FRAME (§9.3) — brass-ruled, registration marks,
+   IN PREPARATION — never an AI-faked face. */
+.callmeta{display:flex;gap:1rem;align-items:flex-start;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line)}
+.callmeta-txt p{font-size:.9rem;color:var(--t-body);margin:.35rem 0 0;max-width:46ch}
+.callmeta-txt .trust{font-size:.82rem;color:var(--t-meta);margin-top:.55rem}
+.holding{position:relative;flex:none;width:92px;aspect-ratio:4/5;border:1px solid var(--bronze);border-radius:3px;background:var(--sunk);color:var(--bronze);display:flex;align-items:flex-end;overflow:hidden}
+.holding .reticle{position:absolute;inset:0;width:100%;height:100%;opacity:.6}
+.holding .lbl{position:relative;font-family:var(--font-mono);font-size:7.5px;line-height:1.28;letter-spacing:.04em;text-transform:uppercase;color:var(--bronze);padding:4px 5px;background:linear-gradient(0deg,var(--sunk) 30%,transparent)}
+
+/* post-submit confirmation state */
+.confirm{max-width:560px;position:relative;border:1px solid var(--line);border-left:2px solid var(--bronze);background:var(--raised);border-radius:0 4px 4px 0;padding:1.6rem 1.5rem;box-shadow:var(--lift)}
+.confirm::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--edge);pointer-events:none}
+.confirm .code{display:block;margin-bottom:.4rem}
+.confirm h3{font-size:clamp(1.4rem,3.4vw,2rem);margin:.2rem 0 .6rem;color:var(--t-hi)}
+.confirm p{font-size:.95rem;color:var(--t-body)}
+</style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
     <a class="brand" href="index.html" aria-label="The Next Mission home">
-      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.92)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.92)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+      <svg width="26" height="26" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
       <b>THE NEXT MISSION</b>
     </a>
     <div class="nav-links">
@@ -24,20 +70,46 @@
       <a href="manual.html">Manual</a>
       <a href="brotherhood.html">Brotherhood</a>
       <a href="about.html">About</a>
-      <a class="btn" href="#call">Request a Briefing Call</a>
+      <button class="theme-toggle" id="themetoggle" type="button" aria-pressed="false" aria-label="Switch to day mode" title="Day / Night mode">
+        <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+        <span class="tt-label">Night</span>
+      </button>
+      <a class="btn" href="join.html#call" aria-current="page">Request a Briefing Call</a>
     </div>
   </div>
 </nav>
 
+<!-- Sticky intake bar — NON-RED (§4j): chalk-mono on --panel with a bronze top edge-light -->
 <div class="intake-bar">NEXT INTAKE: CLASS 26-08 · FOUNDING · 20 PLACES · DATE ANNOUNCED TO APPLICANTS FIRST — <a href="#call">REQUEST A BRIEFING CALL</a></div>
 
 <main>
 
-<section style="border-top:0">
+<!-- 01 · ROUTES IN — three transparent tiers + comparison on a --sunk document band;
+     the Split-Flap Muster Board settles once to the honest inventory fact (§5 #6) -->
+<section class="band-doc" style="border-top:0">
   <div class="wrap">
-    <span class="code" data-scramble>JOIN-01 / ROUTES IN</span>
-    <h2 style="font-size:clamp(2.4rem,5.5vw,3.8rem);margin-top:.5rem">Fall in</h2>
-    <p class="lead">Three routes. One standard once you're in. <strong>A small number of named scholarship places exist every class</strong> — if money is the blocker, say so plainly in the form below.</p>
+    <span class="code" data-scramble>JOIN-01 / MUSTER</span>
+
+    <div class="muster" id="muster" role="img" aria-label="Class 26-08 · 20 places. Founding intake — a fixed inventory fact, not a live counter.">
+      <span class="mword" aria-hidden="true">
+        <span class="flap" data-ch="C">C</span><span class="flap" data-ch="L">L</span><span class="flap" data-ch="A">A</span><span class="flap" data-ch="S">S</span><span class="flap" data-ch="S">S</span>
+      </span>
+      <span class="msep" aria-hidden="true">·</span>
+      <span class="mword" aria-hidden="true">
+        <span class="flap" data-ch="2">2</span><span class="flap" data-ch="6">6</span><span class="flap dash">–</span><span class="flap" data-ch="0">0</span><span class="flap" data-ch="8">8</span>
+      </span>
+      <span class="msep" aria-hidden="true">·</span>
+      <span class="mword" aria-hidden="true">
+        <span class="flap" data-ch="2">2</span><span class="flap" data-ch="0">0</span>
+      </span>
+      <span class="mword" aria-hidden="true">
+        <span class="flap" data-ch="P">P</span><span class="flap" data-ch="L">L</span><span class="flap" data-ch="A">A</span><span class="flap" data-ch="C">C</span><span class="flap" data-ch="E">E</span><span class="flap" data-ch="S">S</span>
+      </span>
+    </div>
+    <span class="muster-cap code">FOUNDING INTAKE · A FIXED INVENTORY FACT, NOT A LIVE COUNTER</span>
+
+    <h2 class="big">Fall in</h2>
+    <p class="lead" style="margin-top:1rem">Three routes. One standard once you're in. <strong>A small number of named scholarship places exist every class</strong> — if money is the blocker, say so plainly in the form below.</p>
 
     <div class="tiers">
       <div class="tier">
@@ -49,16 +121,16 @@
           <li>Scorecards, AAR templates, drill index</li>
           <li>Run the 90 on your own recognisance</li>
         </ul>
-        <a class="btn" data-pay="manual" data-join-path="join.html" href="#call">Get the Manual</a>
+        <a class="route" data-pay="manual" data-join-path="join.html" href="manual.html">Get the Manual →</a>
       </div>
       <div class="tier feature">
         <span class="code" style="color:var(--signal)">TNM-90 · FOUNDING CLASS 26-08 · 20 PLACES</span>
         <h3>90-Day Cohort</h3>
         <div class="price">£497 <small>one-off</small></div>
         <ul>
-          <li>The full 90-day operation, run as a class</li>
-          <li>Weekly live group calls (cap 20)</li>
-          <li>Oppo + section channel</li>
+          <li>The full 90-day operation, run as a class of twenty</li>
+          <li>Six live training calls in weeks 1–3, then ten weeks on operations</li>
+          <li>Section channel + oppo</li>
           <li>3 months of Brotherhood included</li>
           <li>Founding rate locked at £29/mo after</li>
         </ul>
@@ -74,7 +146,7 @@
           <li>Full manual + all future volumes</li>
           <li>Accountability channels</li>
         </ul>
-        <a class="btn" data-pay="brotherhood" data-join-path="join.html" href="#call">Join the Brotherhood</a>
+        <a class="route" data-pay="brotherhood" data-join-path="join.html" href="brotherhood.html">Join the Brotherhood →</a>
       </div>
     </div>
 
@@ -85,7 +157,7 @@
           <tr><td>The complete field manual</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
           <tr><td>Scorecards, AARs, drill index</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
           <tr><td>Section channel + oppo</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
-          <tr><td>Live group calls</td><td class="n">—</td><td class="y">2 / month</td><td class="y">Weekly · cap 20</td></tr>
+          <tr><td>Live training calls</td><td class="n">—</td><td class="y">2 / month</td><td class="y">6 × 2 hrs · cap 20</td></tr>
           <tr><td>Run as a named class, gated weeks</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
           <tr><td>Graduation coin + section-commander path</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
           <tr><td>Brotherhood included</td><td class="n">—</td><td class="y">Is the Brotherhood</td><td class="y">3 months, then £29/mo</td></tr>
@@ -95,11 +167,12 @@
   </div>
 </section>
 
-<section>
+<!-- 02 · ELIGIBILITY — self-qualify BEFORE the form (§6) -->
+<section class="band-air">
   <div class="wrap reveal">
     <span class="code" data-scramble>JOIN-02 / ELIGIBILITY</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Read this before you apply</h2>
-    <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:1.6rem">
+    <h2 class="big" style="margin-top:.5rem">Read this before you apply</h2>
+    <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:1.8rem">
       <div class="advisory brass">
         <span class="code">STANDARD — THE COHORT IS FOR YOU IF</span>
         <ul>
@@ -121,13 +194,16 @@
   </div>
 </section>
 
-<section id="call">
+<!-- 03 · THE BRIEFING CALL — inline form (never link-away); id=callform kept for site.js
+     (Formspree + interest param). Chris's holding frame + call length/format within 40px
+     of the submit; the Day-30 work-verified guarantee as a plain legal notice beside it. -->
+<section class="band-doc" id="call">
   <div class="wrap reveal">
     <span class="code" data-scramble>JOIN-03 / THE BRIEFING CALL</span>
-    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Request a briefing call</h2>
-    <p class="lead" style="margin-bottom:1.8rem">Twenty minutes with <strong>Chris Frost</strong>, on Zoom. Straight questions both ways: what you're carrying, what the programme demands, whether Class 26-08 is the right move. No pitch theatre — if it's not for you, he'll say so on the call.</p>
+    <h2 class="big" style="margin-top:.5rem">Request a briefing call</h2>
+    <p class="lead" style="margin-top:1rem">Twenty minutes with <strong>Chris Frost</strong>, on Zoom. Straight questions both ways: what you're carrying, what the programme demands, whether Class 26-08 is the right move. No pitch theatre — if it's not for you, he'll say so on the call. You're not buying a place. You're asking for one.</p>
 
-    <div style="display:grid;gap:2rem;grid-template-columns:1fr;align-items:start">
+    <div class="callgrid">
       <form class="callform" id="callform" method="POST" action="#">
         <label for="f-name">Name</label>
         <input id="f-name" name="name" type="text" required autocomplete="name">
@@ -143,21 +219,56 @@
           <option>Still serving — leaving soon</option>
           <option>Other / ally</option>
         </select>
-        <label for="f-interest">Interest</label>
+        <label for="f-interest">Which route are you asking about?</label>
         <select id="f-interest" name="interest">
           <option value="cohort">90-Day Cohort — Class 26-08 (£497)</option>
           <option value="brotherhood">Brotherhood (£39/mo)</option>
           <option value="manual">The Manual (£47)</option>
           <option value="unsure">Not sure yet — that's what the call is for</option>
         </select>
+        <label for="f-commit">Can you hold 35 minutes a day for 90 days?</label>
+        <select id="f-commit" name="commitment" required>
+          <option value="">Select…</option>
+          <option>Yes — I can hold that</option>
+          <option>I think so — want to talk it through</option>
+          <option>Not sure yet</option>
+        </select>
         <label for="f-mission">What's the mission? One or two lines on where you are and what needs to change.</label>
         <textarea id="f-mission" name="mission" required></textarea>
         <button class="btn" type="submit">Request a Briefing Call</button>
-        <p class="trust">Received → Chris makes contact within 48 hours. No mailing-list ambush; one reply from one man.</p>
+        <div class="callmeta">
+          <div class="holding" role="img" aria-label="Founder portrait — Chris Frost — in preparation">
+            <svg class="reticle" viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+              <path d="M6 6 h11 M6 6 v11"/><path d="M74 6 h-11 M74 6 v11"/>
+              <path d="M6 94 h11 M6 94 v-11"/><path d="M74 94 h-11 M74 94 v-11"/>
+              <circle cx="40" cy="46" r="13"/><path d="M40 26 v40 M20 46 h40"/>
+            </svg>
+            <span class="lbl">PLATE 01 · FOUNDER<br>CHRIS FROST<br>IN PREPARATION</span>
+          </div>
+          <div class="callmeta-txt">
+            <span class="code brass">THE CALL</span>
+            <p><strong>20 minutes · Zoom · one to one.</strong> Chris takes the briefing call himself — no closer, no hand-off.</p>
+            <p class="trust">Received → Chris makes contact within 48 hours. No mailing-list ambush; one reply from one man.</p>
+          </div>
+        </div>
       </form>
-      <div class="advisory brass" style="max-width:560px">
-        <span class="code">NOTE — THE GUARANTEE</span>
-        <p>Complete the first 30 days of the cohort — every drill, every SITREP — and if it isn't worth the money, say so at your Day-30 review and the £497 is returned in full. The condition is the work, verified by your section. That is the whole document; there is no small print.</p>
+
+      <aside id="callaside" style="display:flex;flex-direction:column;gap:1.4rem">
+        <div class="advisory brass">
+          <span class="code">NOTE — THE GUARANTEE</span>
+          <p>Complete the first 30 days of the cohort — every drill, every SITREP — and if it isn't worth the money, say so at your Day-30 review and the £497 is returned in full. The condition is the work, verified by your section. That is the whole document; there is no small print.</p>
+        </div>
+        <div class="advisory">
+          <span class="code">NOTE — WHAT HAPPENS NEXT</span>
+          <p>You send this. Chris reads it himself and replies within 48 hours to fix a time. The date for Class 26-08 goes to applicants before it goes anywhere else.</p>
+        </div>
+      </aside>
+
+      <!-- post-submit confirmation (revealed by page script; site.js wires the Formspree POST) -->
+      <div class="confirm" id="callsent" role="status" aria-live="polite" hidden>
+        <span class="code brass">RECEIVED — LOGGED</span>
+        <h3>Received. Chris makes contact within 48h.</h3>
+        <p>One reply, from one man — no mailing-list ambush. If things are urgent before then, the crisis lines are in the footer below.</p>
       </div>
     </div>
   </div>
@@ -165,6 +276,7 @@
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="advisory signal" style="margin-bottom:2rem;max-width:none">
@@ -173,16 +285,16 @@
     </div>
     <div class="foot">
       <div>
-        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="rgba(255,255,255,.4)"/><path d="M20 56 L48 40 L76 56" stroke="rgba(255,255,255,.4)"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
+        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-width="9"><path d="M20 78 L48 62 L76 78" stroke="currentColor"/><path d="M20 56 L48 40 L76 56" stroke="currentColor"/><path d="M20 34 L48 18 L76 34" stroke="#E8373D"/></g></svg>
         <p class="doctrine" style="margin-top:.8rem">THE MISSION CHANGED. THE STANDARD DIDN'T.</p>
-        <p class="fine">TNM-FM-01 · Civilian Warrior Brotherhood · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
+        <p class="fine">TNM-FM-01 · General education, not medical, mental-health, investment or legal advice. Not affiliated with the MOD, the NHS, or any third-party coaching brand.</p>
       </div>
       <nav aria-label="Footer">
         <a href="programme.html">PROGRAMME</a>
         <a href="manual.html">MANUAL</a>
         <a href="brotherhood.html">BROTHERHOOD</a>
         <a href="about.html">ABOUT</a>
-        <a href="index.html">HOME</a>
+        <a href="join.html">JOIN</a>
         <a href="privacy.html">PRIVACY</a>
         <a href="terms.html">TERMS</a>
         <a href="https://chrisfrost.coach">CHRISFROST.COACH</a>
@@ -192,5 +304,72 @@
 </footer>
 
 <script src="assets/site.js"></script>
+<script>
+/* join.html page-scoped behaviour — vanilla, iPad-editable, reduced-motion safe.
+   site.js owns the theme toggle, scramble, reveals, magnetic CTA and Formspree wiring;
+   this adds only the two mechanisms unique to /join. */
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- Split-Flap Muster Board (§5 #6): settle ONCE to the static string on first
+     entry, then never move again. Never bound to a live/decrementing count. ---- */
+  var board = document.getElementById("muster");
+  if (board) {
+    var GL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    var flaps = board.querySelectorAll(".flap[data-ch]");
+    if (reduced || !("IntersectionObserver" in window)) {
+      flaps.forEach(function (f) { f.textContent = f.dataset.ch; });   /* instant static */
+    } else {
+      var started = false;
+      var mo = new IntersectionObserver(function (ents) {
+        ents.forEach(function (en) {
+          if (!en.isIntersecting || started) return;
+          started = true;
+          flaps.forEach(function (f, i) {
+            var target = f.dataset.ch, ticks = 5 + (i % 4) * 2, n = 0;
+            var iv = setInterval(function () {
+              n++;
+              if (n >= ticks) { f.textContent = target; clearInterval(iv); }   /* settle, stop */
+              else f.textContent = GL[Math.floor(Math.random() * GL.length)];
+            }, 45);
+          });
+          mo.disconnect();
+        });
+      }, { threshold: 0.5 });
+      mo.observe(board);
+    }
+  }
+
+  /* ---- Inline confirmation (§6): keep the applicant on the page. site.js already set
+     form.action to Formspree and disables the button on submit; here we POST via fetch
+     and swap in the "Received." panel. Old browsers without fetch use the native POST. ---- */
+  var cf = document.getElementById("callform");
+  if (cf && window.fetch) {
+    cf.addEventListener("submit", function (e) {
+      if (!/formspree/i.test(cf.action)) return;   /* not wired → let native submit run */
+      e.preventDefault();
+      fetch(cf.action, { method: "POST", body: new FormData(cf), headers: { "Accept": "application/json" } })
+        .then(function (r) {
+          if (r.ok) {
+            var sent = document.getElementById("callsent");
+            var aside = document.getElementById("callaside");
+            cf.style.display = "none";
+            if (aside) aside.style.display = "none";
+            if (sent) {
+              sent.hidden = false;
+              sent.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+            }
+          } else { restore(); }
+        })
+        .catch(restore);
+      function restore() {
+        var b = cf.querySelector("button[type=submit]");
+        if (b) { b.disabled = false; b.textContent = "Request a Briefing Call"; }
+      }
+    });
+  }
+})();
+</script>
 </body>
 </html>

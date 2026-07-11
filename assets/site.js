@@ -101,14 +101,22 @@
     var muteBtn = document.getElementById("mute");
     var playBtn = document.getElementById("play");
 
-    var muted = false, voAvailable = false;
-    var vo = scenes.map(function (_, i) {
-      var a = new Audio("assets/vo/scene-" + (i + 1) + ".mp3");
-      a.preload = "auto";
-      a.addEventListener("canplaythrough", function () { voAvailable = true; muteBtn.hidden = false; }, { once: true });
-      a.addEventListener("error", function () {}, { once: true });
-      return a;
-    });
+    /* VO lazy-init on first play: no audio requests (or 404s) on page load */
+    var muted = false, voAvailable = false, voInit = false, vo = [];
+    function initVo() {
+      if (voInit) return;
+      voInit = true;
+      fetch("assets/vo/scene-1.mp3", { method: "HEAD" }).then(function (r) {
+        if (!r.ok) return;
+        vo = scenes.map(function (_, i) {
+          var a = new Audio("assets/vo/scene-" + (i + 1) + ".mp3");
+          a.preload = "auto";
+          return a;
+        });
+        voAvailable = true;
+        muteBtn.hidden = false;
+      }).catch(function () {});
+    }
     function stopAllVo() { vo.forEach(function (a) { try { a.pause(); a.currentTime = 0; } catch (e) {} }); }
 
     scenes.forEach(function (s) {
@@ -139,10 +147,12 @@
       for (var i = scenes.length - 1; i >= 0; i--) if (t >= +scenes[i].dataset.start) return i;
       return 0;
     }
+    var jmark = document.getElementById("jmark");
     function render() {
       fill.style.width = (elapsed / DUR * 100) + "%";
       tc.textContent = fmt(elapsed) + " / " + fmt(DUR);
       track.setAttribute("aria-valuenow", Math.floor(elapsed));
+      if (jmark) jmark.style.left = (4 + (elapsed / DUR) * 92) + "%";
       showScene(sceneAt(elapsed));
     }
     function tick(ts) {
@@ -160,7 +170,9 @@
       raf = requestAnimationFrame(tick);
     }
     function play() {
+      initVo();
       poster.classList.add("hidden");
+      player.classList.add("playing");
       bar.hidden = false;
       playing = true; lastTs = null;
       pp.textContent = "❚❚"; pp.setAttribute("aria-label", "Pause");

@@ -87,124 +87,13 @@
     r.addEventListener("click", function () { r.classList.toggle("on"); });
   });
 
-  /* briefing player (index only) */
-  var player = document.getElementById("player");
-  if (player) {
-    var DUR = 40;
-    var scenes = Array.prototype.slice.call(player.querySelectorAll(".scene"));
-    var poster = document.getElementById("poster");
-    var bar = document.getElementById("bar");
-    var fill = document.getElementById("fill");
-    var track = document.getElementById("track");
-    var tc = document.getElementById("tc");
-    var pp = document.getElementById("pp");
-    var muteBtn = document.getElementById("mute");
-    var playBtn = document.getElementById("play");
-
-    /* VO lazy-init on first play: no audio requests (or 404s) on page load */
-    var muted = false, voAvailable = false, voInit = false, vo = [];
-    function initVo() {
-      if (voInit) return;
-      voInit = true;
-      fetch("assets/vo/scene-1.mp3", { method: "HEAD" }).then(function (r) {
-        if (!r.ok) return;
-        vo = scenes.map(function (_, i) {
-          var a = new Audio("assets/vo/scene-" + (i + 1) + ".mp3");
-          a.preload = "auto";
-          return a;
-        });
-        voAvailable = true;
-        muteBtn.hidden = false;
-      }).catch(function () {});
-    }
-    function stopAllVo() { vo.forEach(function (a) { try { a.pause(); a.currentTime = 0; } catch (e) {} }); }
-
-    scenes.forEach(function (s) {
-      var t = +s.dataset.start;
-      if (t === 0) return;
-      var seg = document.createElement("div");
-      seg.className = "seg";
-      seg.style.left = (t / DUR * 100) + "%";
-      track.querySelector(".rail").appendChild(seg);
-    });
-
-    var playing = false, elapsed = 0, lastTs = null, raf = null, current = -1;
-    function fmt(t) { t = Math.floor(t); return Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2); }
-    function showScene(i) {
-      if (i === current) return;
-      current = i;
-      scenes.forEach(function (s, n) {
-        if (n === i) { s.classList.remove("active"); void s.offsetWidth; s.classList.add("active"); }
-        else s.classList.remove("active");
-      });
-      if (playing && voAvailable && !muted) {
-        stopAllVo();
-        var a = vo[i];
-        if (a && a.readyState >= 2) { a.currentTime = 0; a.play().catch(function () {}); }
-      }
-    }
-    function sceneAt(t) {
-      for (var i = scenes.length - 1; i >= 0; i--) if (t >= +scenes[i].dataset.start) return i;
-      return 0;
-    }
-    var jmark = document.getElementById("jmark");
-    function render() {
-      fill.style.width = (elapsed / DUR * 100) + "%";
-      tc.textContent = fmt(elapsed) + " / " + fmt(DUR);
-      track.setAttribute("aria-valuenow", Math.floor(elapsed));
-      if (jmark) jmark.style.left = (4 + (elapsed / DUR) * 92) + "%";
-      showScene(sceneAt(elapsed));
-    }
-    function tick(ts) {
-      if (!playing) return;
-      if (lastTs !== null) elapsed = Math.min(DUR, elapsed + (ts - lastTs) / 1000);
-      lastTs = ts;
-      render();
-      if (elapsed >= DUR) {
-        pause(); stopAllVo();
-        poster.classList.remove("hidden");
-        playBtn.lastChild.textContent = " Replay the briefing";
-        elapsed = 0; current = -1;
-        return;
-      }
-      raf = requestAnimationFrame(tick);
-    }
-    function play() {
-      initVo();
-      poster.classList.add("hidden");
-      player.classList.add("playing");
-      bar.hidden = false;
-      playing = true; lastTs = null;
-      pp.textContent = "❚❚"; pp.setAttribute("aria-label", "Pause");
-      current = -1; render();
-      raf = requestAnimationFrame(tick);
-    }
-    function pause() {
-      playing = false; lastTs = null;
-      if (raf) cancelAnimationFrame(raf);
-      stopAllVo();
-      pp.textContent = "▶"; pp.setAttribute("aria-label", "Play");
-    }
-    playBtn.addEventListener("click", function () {
-      if (reduced) { poster.classList.add("hidden"); bar.hidden = false; elapsed = 0; render(); return; }
-      play();
-    });
-    pp.addEventListener("click", function () { playing ? pause() : play(); });
-    muteBtn.addEventListener("click", function () {
-      muted = !muted;
-      muteBtn.textContent = muted ? "🔇" : "🔊";
-      muteBtn.setAttribute("aria-label", muted ? "Unmute voiceover" : "Mute voiceover");
-      if (muted) stopAllVo();
-    });
-    function seekTo(x) {
-      var r = track.getBoundingClientRect();
-      elapsed = Math.max(0, Math.min(DUR, (x - r.left) / r.width * DUR));
-      current = -1; render();
-    }
-    track.addEventListener("click", function (e) { seekTo(e.clientX); });
-    track.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight") { elapsed = Math.min(DUR, elapsed + 10); current = -1; render(); }
-      if (e.key === "ArrowLeft") { elapsed = Math.max(0, elapsed - 10); current = -1; render(); }
-    });
+  /* cinematic film hero (index only) — poster overlay → play with sound; native controls after */
+  var film = document.getElementById("film");
+  if (film) {
+    var vid = document.getElementById("herovid");
+    var cue = document.getElementById("filmplay");
+    cue.addEventListener("click", function () { vid.play().catch(function () {}); });
+    vid.addEventListener("play", function () { cue.classList.add("hidden"); });
+    vid.addEventListener("ended", function () { cue.classList.remove("hidden"); try { vid.currentTime = 0; } catch (e) {} });
   }
 })();

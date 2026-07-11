@@ -227,6 +227,18 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 3rem}
 .glow::before{content:"";position:absolute;width:520px;height:520px;left:50%;top:38%;transform:translate(-50%,-50%);border-radius:50%;background:var(--signal);opacity:.10;filter:blur(120px);pointer-events:none;z-index:-1}
 .glow.brass::before{background:var(--brass);opacity:.08}
 
+/* cinematic film hero (index) — real 40s film, poster + play overlay */
+.film{position:relative;max-width:900px;margin:0 auto;aspect-ratio:16/9;background:#070B1D;border:1px solid var(--line);border-radius:6px;overflow:hidden;text-align:left}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#070B1D}
+.film-chrome{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:.7rem 1rem;z-index:5;pointer-events:none}
+.film-play{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;background:linear-gradient(180deg,rgba(9,14,37,.12),rgba(9,14,37,.55));border:0;cursor:pointer;transition:opacity .4s var(--ease)}
+.film-play.hidden{opacity:0;pointer-events:none}
+.film-mark{width:54px;display:block}
+.film-cue{display:inline-flex;align-items:center;gap:.6rem;background:var(--signal);color:#fff;font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem;padding:.6em 1.4em;border-radius:3px;transition:background 150ms var(--ease)}
+.film-play:hover .film-cue{background:var(--signal-hover)}
+.film-cue svg{width:11px;height:13px}
+.film-play .code{color:var(--t-meta)}
+
 /* briefing player (index hero) */
 .player{position:relative;max-width:900px;margin:0 auto;aspect-ratio:16/9;background:var(--raised);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-align:left}
 .player-chrome{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:.7rem 1rem;z-index:5;pointer-events:none}
